@@ -17,4 +17,27 @@ class EloquentUserRepository implements UserRepository
     {
         return User::find($id);
     }
+
+    public function addToWallet(int $userId, string $symbol, $amount)
+    {
+        User::leftJoin('userWallets','userWallets.user_id','=','users.id')
+            ->leftJoin('companies', 'companies.id', '=', 'userWallets.company_id')
+            ->where('userWallets.user_id', $userId)
+            ->where('companies.symbol', $symbol)
+            ->update(
+                [
+                    'wallet' => $amount
+                ]
+            );
+
+    }
+
+    public function findUserWallet(int $userId, string $symbol){
+        return User::leftJoin('userWallets','userWallets.user_id','=','users.id')
+            ->leftJoin('companies', 'companies.id', '=', 'userWallets.company_id')
+            ->where('userWallets.user_id', $userId)
+            ->where('companies.symbol', $symbol)
+            ->select('userWallets.wallet')
+            ->first();
+    }
 }

@@ -8,7 +8,22 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable implements JWTSubject
 {
+
     use Notifiable;
+
+    public $fillable = [
+        'username',
+        "email",
+        "money",
+        "seasonMoney"
+    ];
+
+    public $hidden = [
+        'password',
+        'created_at',
+        'updated_at',
+        'deleted_at'
+    ];
 
     // Rest omitted for brevity
 
@@ -31,4 +46,6 @@ class User extends Authenticatable implements JWTSubject
     {
         return [];
     }
+
+
 }

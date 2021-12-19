@@ -12,7 +12,8 @@ class AuthMiddleware extends BaseMiddleware
     public function handle(Request $request, Closure $next)
     {
         try {
-            JWTAuth::parseToken()->authenticate();
+            $user = JWTAuth::parseToken()->authenticate();
+
         } catch (Tymon\JWTAuth\Exceptions\TokenExpiredException $e) {
             return response()->json(['error' => true, 'message' => 'Token has expired.']);
         } catch (Tymon\JWTAuth\Exceptions\TokenInvalidException $e) {

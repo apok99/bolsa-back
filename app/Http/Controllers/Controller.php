@@ -14,7 +14,7 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    private CommandBusInterface $bus;
+    private ?CommandBusInterface $bus;
 
     public function __construct(CommandBusInterface $bus)
     {
@@ -26,8 +26,8 @@ class Controller extends BaseController
         return $this->bus;
     }
 
-    public function handle( $command,  $handler, array $data){
-        $this->bus()->addHandler($command, $handler);
-        return $this->bus()->dispatch($command, $data);
+    public function handle($command,  $handler, array $data){
+        $this->bus->addHandler($command, $handler);
+        return $this->bus->dispatch($command, $data);
     }
 }
