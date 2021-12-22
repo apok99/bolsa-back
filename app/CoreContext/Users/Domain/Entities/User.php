@@ -35,5 +35,7 @@ class User extends Authenticatable implements JWTSubject
         return [];
     }
 
-
+    public function wallets(){
+        return $this->hasMany('\App\CoreContext\Users\Domain\Entities\UserWallets', 'user_id');
+    }
 }

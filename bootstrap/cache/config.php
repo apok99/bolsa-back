@@ -433,6 +433,16 @@
       'storage' => 'Tymon\\JWTAuth\\Providers\\Storage\\Illuminate',
     ),
   ),
+  'laravel-tactician' => 
+  array (
+    'locator' => 'Joselfonseca\\LaravelTactician\\Locator\\LaravelLazyLocator',
+    'inflector' => 'League\\Tactician\\Handler\\MethodNameInflector\\HandleInflector',
+    'inflector-undoable' => 'Joselfonseca\\LaravelTactician\\Handler\\HandleInflectorUndoable',
+    'extractor' => 'League\\Tactician\\Handler\\CommandNameExtractor\\ClassNameExtractor',
+    'extractor-undoable' => 'Joselfonseca\\LaravelTactician\\Handler\\ClassNameExtractorUndoable',
+    'bus' => 'Joselfonseca\\LaravelTactician\\Bus',
+    'bus-undoable' => 'Joselfonseca\\LaravelTactician\\BusUndoable',
+  ),
   'logging' => 
   array (
     'default' => 'stack',
@@ -755,15 +765,5 @@
     'remote_sites_path' => '',
     'local_sites_path' => '',
     'housekeeping_endpoint_prefix' => '_ignition',
-  ),
-  'laravel-tactician' => 
-  array (
-    'locator' => 'Joselfonseca\\LaravelTactician\\Locator\\LaravelLazyLocator',
-    'inflector' => 'League\\Tactician\\Handler\\MethodNameInflector\\HandleInflector',
-    'inflector-undoable' => 'Joselfonseca\\LaravelTactician\\Handler\\HandleInflectorUndoable',
-    'extractor' => 'League\\Tactician\\Handler\\CommandNameExtractor\\ClassNameExtractor',
-    'extractor-undoable' => 'Joselfonseca\\LaravelTactician\\Handler\\ClassNameExtractorUndoable',
-    'bus' => 'Joselfonseca\\LaravelTactician\\Bus',
-    'bus-undoable' => 'Joselfonseca\\LaravelTactician\\BusUndoable',
   ),
 );

@@ -4,6 +4,8 @@ use App\CoreContext\Users\Infrastructure\Controllers\AuthUserController;
 use App\CoreContext\Users\Infrastructure\Controllers\CreateUserController;
 use App\CoreContext\Users\Infrastructure\Controllers\MeUserController;
 use App\CoreContext\Users\Infrastructure\Controllers\UserBuyController;
+use App\CoreContext\Users\Infrastructure\Controllers\UserSellController;
+use App\CoreContext\Users\Infrastructure\Controllers\UserWalletsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,4 +25,6 @@ Route::post('/login', [AuthUserController::class, 'login'])->name('login');
 Route::middleware('jwtAuth')->group(function () {
     Route::get('/me', [MeUserController::class, '__invoke'])->name('me');
     Route::post('/buy', [UserBuyController::class, '__invoke'])->name('buy');
+    Route::post('/sell', UserSellController::class, '__invoke')->name('sell');
+    Route::get('/users/wallets', [UserWalletsController::class, '__invoke'])->name('users-wallets');
 });

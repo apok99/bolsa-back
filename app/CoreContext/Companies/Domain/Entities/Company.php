@@ -11,6 +11,6 @@ class Company extends Model
 
     public function wallets()
     {
-        return $this->hasMany('App\Models\UserWallet');
+        return $this->hasMany('\App\CoreContext\Users\Domain\Entities\Company', 'company_id');
     }
 }

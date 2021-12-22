@@ -24,7 +24,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::1ud1hhYM9Asosl27',
+            '_route' => 'generated::aSBHrRVUTBJtUbsV',
           ),
           1 => NULL,
           2 => 
@@ -44,7 +44,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::9HRubgF2gTZhQhwX',
+            '_route' => 'generated::Qw012JoHx7nAzL80',
           ),
           1 => NULL,
           2 => 
@@ -135,6 +135,45 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
+      '/sell' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'sell',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'POST' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/users/wallets' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'users-wallets',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
     ),
     2 => 
     array (
@@ -146,7 +185,7 @@ app('router')->setCompiledRoutes(
   ),
   'attributes' => 
   array (
-    'generated::1ud1hhYM9Asosl27' => 
+    'generated::aSBHrRVUTBJtUbsV' => 
     array (
       'methods' => 
       array (
@@ -167,7 +206,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 'web',
         ),
-        'as' => 'generated::1ud1hhYM9Asosl27',
+        'as' => 'generated::aSBHrRVUTBJtUbsV',
       ),
       'fallback' => false,
       'defaults' => 
@@ -183,7 +222,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::9HRubgF2gTZhQhwX' => 
+    'generated::Qw012JoHx7nAzL80' => 
     array (
       'methods' => 
       array (
@@ -206,7 +245,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::9HRubgF2gTZhQhwX',
+        'as' => 'generated::Qw012JoHx7nAzL80',
       ),
       'fallback' => false,
       'defaults' => 
@@ -354,6 +393,81 @@ app('router')->setCompiledRoutes(
         array (
         ),
         'as' => 'buy',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'sell' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'POST',
+      ),
+      'uri' => 'sell',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'jwtAuth',
+        ),
+        'uses' => 'App\\CoreContext\\Users\\Infrastructure\\Controllers\\UserSellController@__invoke',
+        'controller' => 'App\\CoreContext\\Users\\Infrastructure\\Controllers\\UserSellController',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'sell',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'users-wallets' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'users/wallets',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'jwtAuth',
+        ),
+        'uses' => 'App\\CoreContext\\Users\\Infrastructure\\Controllers\\UserWalletsController@__invoke',
+        'controller' => 'App\\CoreContext\\Users\\Infrastructure\\Controllers\\UserWalletsController@__invoke',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'users-wallets',
       ),
       'fallback' => false,
       'defaults' => 

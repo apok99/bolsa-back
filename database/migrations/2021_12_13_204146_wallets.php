@@ -13,7 +13,7 @@ class Wallets extends Migration
      */
     public function up()
     {
-        Schema::create('userWallets', function (Blueprint $table) {
+        Schema::create('user_wallets', function (Blueprint $table) {
             $table->id();
             $table->string('user_id');
             $table->string('company_id');
