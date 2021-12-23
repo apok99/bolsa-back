@@ -8,7 +8,6 @@ class UserWalletsFactory
 {
     public static function create(UserWallets $wallet)
     {
-
         return new UserWalletView(
             $wallet->company->name,
             $wallet->wallet

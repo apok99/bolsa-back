@@ -19,11 +19,13 @@ class UserSellHandler
         $wallet = $this->userRepository->findUserWallet($query->user()->id, $query->symbol());
         $user = $this->userRepository->byId($query->user()->id);
 
+        if (!$wallet)
+            throw new \Exception("Wallet not found");
+
         if ($wallet->wallet < $query->quantity())
             throw new \Exception("User does not have enough stock.");
 
         $wallet->wallet -= $query->quantity();
-
         $user->money = $user->money + ($query->quantity() * $query->price());
 
         $this->userRepository->updateWallet($user->id, $query->symbol(), $wallet->wallet);

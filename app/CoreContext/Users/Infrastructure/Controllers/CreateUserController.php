@@ -4,6 +4,7 @@ namespace App\CoreContext\Users\Infrastructure\Controllers;
 
 use App\CoreContext\Users\Application\Commands\CreateUser;
 use App\CoreContext\Users\Application\Commands\CreateUserHandler;
+use App\CoreContext\Users\Infrastructure\Actions\CreateUserWalletsAction;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -28,7 +29,6 @@ class CreateUserController extends Controller
        );
 
         $fromBusResponse = $this->handle(CreateUser::class, CreateUserHandler::class, $command);
-
         return response($fromBusResponse);
     }
 }

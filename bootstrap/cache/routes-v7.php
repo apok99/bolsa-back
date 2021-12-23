@@ -24,7 +24,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::aSBHrRVUTBJtUbsV',
+            '_route' => 'generated::RHONfULd8o1cKyE6',
           ),
           1 => NULL,
           2 => 
@@ -44,7 +44,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::Qw012JoHx7nAzL80',
+            '_route' => 'generated::056FNJ9mDLbiCR4Y',
           ),
           1 => NULL,
           2 => 
@@ -174,6 +174,26 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
+      '/companies-generate' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'companies-generate',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
     ),
     2 => 
     array (
@@ -185,7 +205,7 @@ app('router')->setCompiledRoutes(
   ),
   'attributes' => 
   array (
-    'generated::aSBHrRVUTBJtUbsV' => 
+    'generated::RHONfULd8o1cKyE6' => 
     array (
       'methods' => 
       array (
@@ -206,7 +226,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 'web',
         ),
-        'as' => 'generated::aSBHrRVUTBJtUbsV',
+        'as' => 'generated::RHONfULd8o1cKyE6',
       ),
       'fallback' => false,
       'defaults' => 
@@ -222,7 +242,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::Qw012JoHx7nAzL80' => 
+    'generated::056FNJ9mDLbiCR4Y' => 
     array (
       'methods' => 
       array (
@@ -245,7 +265,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::Qw012JoHx7nAzL80',
+        'as' => 'generated::056FNJ9mDLbiCR4Y',
       ),
       'fallback' => false,
       'defaults' => 
@@ -468,6 +488,44 @@ app('router')->setCompiledRoutes(
         array (
         ),
         'as' => 'users-wallets',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'companies-generate' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'companies-generate',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'jwtAuth',
+        ),
+        'uses' => 'App\\CoreContext\\Companies\\Infrastructure\\Controllers\\CreateCompaniesController@__invoke',
+        'controller' => 'App\\CoreContext\\Companies\\Infrastructure\\Controllers\\CreateCompaniesController@__invoke',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'companies-generate',
       ),
       'fallback' => false,
       'defaults' => 

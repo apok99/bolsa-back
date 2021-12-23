@@ -1,5 +1,6 @@
 <?php
 
+use App\CoreContext\Companies\Infrastructure\Controllers\CreateCompaniesController;
 use App\CoreContext\Users\Infrastructure\Controllers\AuthUserController;
 use App\CoreContext\Users\Infrastructure\Controllers\CreateUserController;
 use App\CoreContext\Users\Infrastructure\Controllers\MeUserController;
@@ -27,4 +28,6 @@ Route::middleware('jwtAuth')->group(function () {
     Route::post('/buy', [UserBuyController::class, '__invoke'])->name('buy');
     Route::post('/sell', UserSellController::class, '__invoke')->name('sell');
     Route::get('/users/wallets', [UserWalletsController::class, '__invoke'])->name('users-wallets');
+    Route::get('/companies-generate', [CreatecompaniesController::class, '__invoke'])->name('companies-generate');
+
 });

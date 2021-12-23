@@ -14,6 +14,7 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind('App\CoreContext\Users\Domain\Entities\UserRepository', 'App\CoreContext\Users\Infrastructure\Repositories\EloquentUserRepository');
+        $this->app->bind('App\CoreContext\Companies\Domain\Entities\CompanyRepository', 'App\CoreContext\Companies\Infrastructure\Repositories\EloquentCompanyRepository');
 
     }
 

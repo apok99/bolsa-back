@@ -17,8 +17,11 @@ class UserBuyHandler
 
         $user = $this->userRepository->byId($userBuy->user()->id);
         $wallet = $this->userRepository->findUserWallet($userBuy->user()->id, $userBuy->symbol());
-
         //Deuda tecnica cambiar a Excepcion en otro archivo.
+
+        if (!$wallet)
+            throw new \Exception("Wallet not found");
+
         if ($user->money < $userBuy->cost())
             throw new \Exception("User does not have enough money.");
 

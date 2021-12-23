@@ -40,6 +40,6 @@ class UserSellController extends Controller
         ];
 
         $this->handle(UserSell::class, UserSellHandler::class, $transaction);
-
+        return response()->json(['sell' => true]);
     }
 }

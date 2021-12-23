@@ -23,10 +23,11 @@ class CreateUserHandler
         $newUser->password = $user->password();
         $newUser->money = $user->money();
         $newUser->seasonMoney = $user->seasonMoney();
-
-        $newUser = $this->userRepository->save($newUser);
+        $this->userRepository->save($newUser);
 
         return $newUser;
     }
+
+
 
 }
