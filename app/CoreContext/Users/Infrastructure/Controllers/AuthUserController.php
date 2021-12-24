@@ -3,6 +3,7 @@
 namespace App\CoreContext\Users\Infrastructure\Controllers;
 
 use App\Http\Controllers\Controller;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
 class AuthUserController extends Controller
 {
@@ -11,8 +12,9 @@ class AuthUserController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
+    public function __construct(){
+        //Hacemos que el token caduque a las 8h
+        JWTAuth::factory()->setTTL(52560);
     }
 
     /**

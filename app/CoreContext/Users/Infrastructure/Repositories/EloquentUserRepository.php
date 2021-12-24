@@ -46,7 +46,8 @@ class EloquentUserRepository implements UserRepository
             );
     }
 
-    public function findUserWallet(int $userId, string $symbol){
+    public function findUserWallet(int $userId, string $symbol)
+    {
         return User::leftJoin('user_wallets','user_wallets.user_id','=','users.id')
             ->leftJoin('companies', 'companies.id', '=', 'user_wallets.company_id')
             ->where('user_wallets.user_id', $userId)
@@ -57,6 +58,11 @@ class EloquentUserRepository implements UserRepository
 
     public function findAllWalletsByUserId(int $userId)
     {
-        return UserWallets::with(['company', 'user'])->where('user_id', $userId)->get();
+        return UserWallets::with(['company', 'user'])->where('user_id', $userId)->where('wallet', '>',0)->orderBy('wallet', 'desc')->get();
+    }
+
+    public function createUserWallets(array $wallets)
+    {
+        return UserWallets::insert($wallets);
     }
 }

@@ -11,4 +11,8 @@ class EloquentCompanyRepository implements CompanyRepository
     {
         Company::insert($companies);
     }
+
+    public function getAll(){
+        return Company::get();
+    }
 }

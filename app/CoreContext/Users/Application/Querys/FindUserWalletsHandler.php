@@ -23,7 +23,6 @@ class FindUserWalletsHandler
 
         foreach ($wallets as $wallet)
         {
-
             $collection[] = UserWalletsFactory::create($wallet);
         }
 

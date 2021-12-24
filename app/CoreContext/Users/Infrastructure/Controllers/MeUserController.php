@@ -9,18 +9,7 @@ use Illuminate\Http\Request;
 
 class MeUserController extends Controller
 {
-    const ID = 'id';
-
     public function __invoke(Request $request){
-
-
-//
-//        $query = array(
-//            self::ID => $request->id,
-//        );
-//
-//        $fromBusResponse = $this->handle(FindUserById::class, FindUserByIdHandler::class, $query);
-        return response(auth()->user());
-
+        return response(auth()->user()  );
     }
 }
