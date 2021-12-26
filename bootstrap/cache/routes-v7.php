@@ -24,7 +24,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::RHONfULd8o1cKyE6',
+            '_route' => 'generated::x23DTZDth4QYMDb5',
           ),
           1 => NULL,
           2 => 
@@ -44,7 +44,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::056FNJ9mDLbiCR4Y',
+            '_route' => 'generated::hLSWXXa3QzvucXRt',
           ),
           1 => NULL,
           2 => 
@@ -205,7 +205,7 @@ app('router')->setCompiledRoutes(
   ),
   'attributes' => 
   array (
-    'generated::RHONfULd8o1cKyE6' => 
+    'generated::x23DTZDth4QYMDb5' => 
     array (
       'methods' => 
       array (
@@ -226,7 +226,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 'web',
         ),
-        'as' => 'generated::RHONfULd8o1cKyE6',
+        'as' => 'generated::x23DTZDth4QYMDb5',
       ),
       'fallback' => false,
       'defaults' => 
@@ -242,7 +242,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::056FNJ9mDLbiCR4Y' => 
+    'generated::hLSWXXa3QzvucXRt' => 
     array (
       'methods' => 
       array (
@@ -259,13 +259,13 @@ app('router')->setCompiledRoutes(
         ),
         'uses' => 'O:47:"Laravel\\SerializableClosure\\SerializableClosure":1:{s:12:"serializable";O:46:"Laravel\\SerializableClosure\\Serializers\\Signed":2:{s:12:"serializable";s:295:"O:46:"Laravel\\SerializableClosure\\Serializers\\Native":5:{s:3:"use";a:0:{}s:8:"function";s:77:"function (\\Illuminate\\Http\\Request $request) {
     return $request->user();
-}";s:5:"scope";s:37:"Illuminate\\Routing\\RouteFileRegistrar";s:4:"this";N;s:4:"self";s:32:"00000000000006260000000000000000";}";s:4:"hash";s:44:"By3MPDVeoEWvk0XYGIjohC06DX98QdLP1IPdKjfQ00c=";}}',
+}";s:5:"scope";s:37:"Illuminate\\Routing\\RouteFileRegistrar";s:4:"this";N;s:4:"self";s:32:"00000000000006290000000000000000";}";s:4:"hash";s:44:"NCpFSjCrHOw0Tjy9GdkXqCMphwqf4+bIQMCijMfIxp0=";}}',
         'namespace' => NULL,
         'prefix' => 'api',
         'where' => 
         array (
         ),
-        'as' => 'generated::056FNJ9mDLbiCR4Y',
+        'as' => 'generated::hLSWXXa3QzvucXRt',
       ),
       'fallback' => false,
       'defaults' => 

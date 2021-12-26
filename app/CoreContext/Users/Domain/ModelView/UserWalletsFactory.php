@@ -10,7 +10,8 @@ class UserWalletsFactory
     {
         return new UserWalletView(
             $wallet->company->name,
-            $wallet->wallet
+            $wallet->wallet,
+            $wallet->company->symbol
         );
     }
 

@@ -236,7 +236,7 @@
   array (
     'paths' => 
     array (
-      0 => 'api/*',
+      0 => '*',
       1 => 'sanctum/csrf-cookie',
     ),
     'allowed_methods' => 
@@ -258,7 +258,7 @@
     array (
     ),
     'max_age' => 0,
-    'supports_credentials' => false,
+    'supports_credentials' => true,
   ),
   'database' => 
   array (
