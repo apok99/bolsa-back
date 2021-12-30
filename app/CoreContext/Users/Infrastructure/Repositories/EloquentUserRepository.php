@@ -58,7 +58,7 @@ class EloquentUserRepository implements UserRepository
 
     public function findAllWalletsByUserId(int $userId)
     {
-        return UserWallets::with(['company', 'user'])->where('user_id', $userId)->where('wallet', '>',0)->orderBy('wallet', 'desc')->get();
+        return UserWallets::with(['company', 'user'])->where('user_id', $userId)    ->orderBy('wallet', 'desc')->get();
     }
 
     public function createUserWallets(array $wallets)

@@ -6,7 +6,6 @@ use App\CoreContext\Users\Domain\Entities\UserRepository;
 
 class UserSellHandler
 {
-
     private UserRepository $userRepository;
 
     public function __construct(UserRepository $userRepository)
@@ -26,7 +25,7 @@ class UserSellHandler
             throw new \Exception("User does not have enough stock.");
 
         $wallet->wallet -= $query->quantity();
-        $user->money = $user->money + ($query->quantity() * $query->price());
+        $user->money = $user->money + ($query->quantity() * ($query->price() * 98 / 100 ));
 
         $this->userRepository->updateWallet($user->id, $query->symbol(), $wallet->wallet);
         $this->userRepository->save($user);

@@ -6,6 +6,7 @@ use App\CoreContext\Companies\Application\Querys\FindPriceBySymbol;
 use App\CoreContext\Companies\Application\Querys\FindPriceBySymbolHandler;
 use App\CoreContext\Users\Application\Commands\UserSell;
 use App\CoreContext\Users\Application\Commands\UserSellHandler;
+use App\CoreContext\Users\Infrastructure\Validators\SellValidator;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
@@ -16,6 +17,7 @@ class UserSellController extends Controller
     const USER = 'user';
     const QUANTITY = 'quantity';
     const PRICE = 'price';
+    const COMISION = 0.98;
 
     public function __invoke(Request $request)
     {
