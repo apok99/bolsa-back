@@ -38,7 +38,6 @@ class CreateUserController extends Controller
 
         $user = $this->handle(CreateUser::class, CreateUserHandler::class, $command);
         $companies = $this->handle(FindAllCompanies::class, FindAllCompaniesHandler::class, []);
-
         $wallets = CreateUserWalletsAction::execute($user, $companies);
 
         $createUserWalletsCommand = [

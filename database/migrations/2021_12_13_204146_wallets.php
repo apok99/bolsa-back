@@ -17,7 +17,8 @@ class Wallets extends Migration
             $table->id();
             $table->string('user_id');
             $table->string('company_id');
-            $table->decimal('wallet');
+            $table->decimal('wallet',);
+            $table->decimal('season_wallet');
             $table->timestamps();
         });
     }

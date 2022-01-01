@@ -11,7 +11,8 @@ class UserWalletsFactory
         return new UserWalletView(
             $wallet->company->name,
             $wallet->wallet,
-            $wallet->company->symbol
+            $wallet->company->symbol,
+            $wallet->season_wallet
         );
     }
 

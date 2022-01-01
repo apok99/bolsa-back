@@ -15,7 +15,8 @@ class CreateUserWalletsAction
             $wallets[] = [
                 'user_id' => $user->id,
                 'company_id' => $company->id,
-                'wallet' => 0
+                'wallet' => 0,
+                'season_wallet' => 0
             ];
         }
 

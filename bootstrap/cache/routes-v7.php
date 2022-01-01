@@ -24,7 +24,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::x23DTZDth4QYMDb5',
+            '_route' => 'generated::lKSErAkWzX1HJop8',
           ),
           1 => NULL,
           2 => 
@@ -44,7 +44,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::hLSWXXa3QzvucXRt',
+            '_route' => 'generated::Y0wmt4zvKJZXauDC',
           ),
           1 => NULL,
           2 => 
@@ -205,7 +205,7 @@ app('router')->setCompiledRoutes(
   ),
   'attributes' => 
   array (
-    'generated::x23DTZDth4QYMDb5' => 
+    'generated::lKSErAkWzX1HJop8' => 
     array (
       'methods' => 
       array (
@@ -226,7 +226,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 'web',
         ),
-        'as' => 'generated::x23DTZDth4QYMDb5',
+        'as' => 'generated::lKSErAkWzX1HJop8',
       ),
       'fallback' => false,
       'defaults' => 
@@ -242,7 +242,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::hLSWXXa3QzvucXRt' => 
+    'generated::Y0wmt4zvKJZXauDC' => 
     array (
       'methods' => 
       array (
@@ -265,7 +265,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::hLSWXXa3QzvucXRt',
+        'as' => 'generated::Y0wmt4zvKJZXauDC',
       ),
       'fallback' => false,
       'defaults' => 
@@ -516,7 +516,6 @@ app('router')->setCompiledRoutes(
         'middleware' => 
         array (
           0 => 'web',
-          1 => 'jwtAuth',
         ),
         'uses' => 'App\\CoreContext\\Companies\\Infrastructure\\Controllers\\CreateCompaniesController@__invoke',
         'controller' => 'App\\CoreContext\\Companies\\Infrastructure\\Controllers\\CreateCompaniesController@__invoke',
