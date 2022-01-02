@@ -15,6 +15,7 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->bind('App\CoreContext\Users\Domain\Entities\UserRepository', 'App\CoreContext\Users\Infrastructure\Repositories\EloquentUserRepository');
         $this->app->bind('App\CoreContext\Companies\Domain\Entities\CompanyRepository', 'App\CoreContext\Companies\Infrastructure\Repositories\EloquentCompanyRepository');
+        $this->app->bind('App\CoreContext\Season\Domain\Entities\SeasonRepository', 'App\CoreContext\Season\Infrastructure\Repositories\EloquentSeasonRepository');
 
     }
 

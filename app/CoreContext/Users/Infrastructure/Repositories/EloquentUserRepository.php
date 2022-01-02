@@ -65,4 +65,10 @@ class EloquentUserRepository implements UserRepository
     {
         return UserWallets::insert($wallets);
     }
+
+
+    public function resetSeasonWallets()
+    {
+        return UserWallets::update(['season_wallet' => 0]);
+    }
 }

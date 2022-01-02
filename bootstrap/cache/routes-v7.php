@@ -24,7 +24,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::lKSErAkWzX1HJop8',
+            '_route' => 'generated::5Pr0zHsmj1odJHoE',
           ),
           1 => NULL,
           2 => 
@@ -44,7 +44,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::Y0wmt4zvKJZXauDC',
+            '_route' => 'generated::L49SUpihNpLNCxNO',
           ),
           1 => NULL,
           2 => 
@@ -174,6 +174,65 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
+      '/companies' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'companies',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/season' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'seasonStart',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'POST' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/random-gift-season' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'random-gift-season',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
       '/companies-generate' => 
       array (
         0 => 
@@ -205,7 +264,7 @@ app('router')->setCompiledRoutes(
   ),
   'attributes' => 
   array (
-    'generated::lKSErAkWzX1HJop8' => 
+    'generated::5Pr0zHsmj1odJHoE' => 
     array (
       'methods' => 
       array (
@@ -226,7 +285,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 'web',
         ),
-        'as' => 'generated::lKSErAkWzX1HJop8',
+        'as' => 'generated::5Pr0zHsmj1odJHoE',
       ),
       'fallback' => false,
       'defaults' => 
@@ -242,7 +301,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::Y0wmt4zvKJZXauDC' => 
+    'generated::L49SUpihNpLNCxNO' => 
     array (
       'methods' => 
       array (
@@ -259,13 +318,13 @@ app('router')->setCompiledRoutes(
         ),
         'uses' => 'O:47:"Laravel\\SerializableClosure\\SerializableClosure":1:{s:12:"serializable";O:46:"Laravel\\SerializableClosure\\Serializers\\Signed":2:{s:12:"serializable";s:295:"O:46:"Laravel\\SerializableClosure\\Serializers\\Native":5:{s:3:"use";a:0:{}s:8:"function";s:77:"function (\\Illuminate\\Http\\Request $request) {
     return $request->user();
-}";s:5:"scope";s:37:"Illuminate\\Routing\\RouteFileRegistrar";s:4:"this";N;s:4:"self";s:32:"00000000000006290000000000000000";}";s:4:"hash";s:44:"NCpFSjCrHOw0Tjy9GdkXqCMphwqf4+bIQMCijMfIxp0=";}}',
+}";s:5:"scope";s:37:"Illuminate\\Routing\\RouteFileRegistrar";s:4:"this";N;s:4:"self";s:32:"000000000000062c0000000000000000";}";s:4:"hash";s:44:"exuujPVEJQEaXNkZZn1OeGZXC+qKYU8OaTEuV1SawXk=";}}',
         'namespace' => NULL,
         'prefix' => 'api',
         'where' => 
         array (
         ),
-        'as' => 'generated::Y0wmt4zvKJZXauDC',
+        'as' => 'generated::L49SUpihNpLNCxNO',
       ),
       'fallback' => false,
       'defaults' => 
@@ -488,6 +547,119 @@ app('router')->setCompiledRoutes(
         array (
         ),
         'as' => 'users-wallets',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'companies' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'companies',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'jwtAuth',
+        ),
+        'uses' => 'App\\CoreContext\\Users\\Infrastructure\\Controllers\\UserWalletsController@__invoke',
+        'controller' => 'App\\CoreContext\\Users\\Infrastructure\\Controllers\\UserWalletsController@__invoke',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'companies',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'seasonStart' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'POST',
+      ),
+      'uri' => 'season',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'jwtAuth',
+        ),
+        'uses' => 'App\\CoreContext\\Season\\Infrastructure\\Controllers\\SeasonStartController@__invoke',
+        'controller' => 'App\\CoreContext\\Season\\Infrastructure\\Controllers\\SeasonStartController@__invoke',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'seasonStart',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'random-gift-season' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'random-gift-season',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'jwtAuth',
+        ),
+        'uses' => 'App\\CoreContext\\Season\\Infrastructure\\Controllers\\GetRandomGiftController@__invoke',
+        'controller' => 'App\\CoreContext\\Season\\Infrastructure\\Controllers\\GetRandomGiftController@__invoke',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'random-gift-season',
       ),
       'fallback' => false,
       'defaults' => 
