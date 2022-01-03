@@ -32,7 +32,7 @@ class CreateSeasonCommandHandler
             'start_date' => $createSeasonCommad->now(),
             'active' => true,
             'end_date' => null,
-            'created_at' => $season->now()
+            'created_at' => $createSeasonCommad->now() ?? new \Datetime()
         ];
 
         $this->seasonRepository->create($newSeasons);

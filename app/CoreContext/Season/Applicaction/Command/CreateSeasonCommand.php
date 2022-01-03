@@ -2,7 +2,7 @@
 
 namespace App\CoreContext\Season\Applicaction\Command;
 
-class CreateSeasonCommand
+class   CreateSeasonCommand
 {
     private $active;
     private \Datetime $now;
