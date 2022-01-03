@@ -11,11 +11,11 @@ class UserWallets extends Model
 
     public function user()
     {
-        return $this->belongsTo('\App\CoreContext\Users\Domain\Entities\User', 'id');
+        return $this->belongsTo('\App\CoreContext\Users\Domain\Entities\User', 'user_id');
     }
 
     public function company()
     {
-        return $this->belongsTo('\App\CoreContext\Companies\Domain\Entities\Company', 'id');
+        return $this->belongsTo('\App\CoreContext\Companies\Domain\Entities\Company', 'company_id');
     }
 }

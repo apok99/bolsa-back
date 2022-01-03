@@ -31,8 +31,8 @@ class CreateSeasonCommandHandler
             'name' => 'Season '.(($season->id ?? 0) + 1),
             'start_date' => $createSeasonCommad->now(),
             'active' => true,
-            'end_date' => null,
-            'created_at' => $createSeasonCommad->now() ?? new \Datetime()
+            'end_date' => $createSeasonCommad->now()->add('30 days'),
+            'created_at' => $createSeasonCommad->now()->now() ?? new \Datetime()
         ];
 
         $this->seasonRepository->create($newSeasons);
