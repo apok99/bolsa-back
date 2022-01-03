@@ -31,7 +31,7 @@ class CreateSeasonCommandHandler
             'name' => 'Season '.(($season->id ?? 0) + 1),
             'start_date' => $createSeasonCommad->now(),
             'active' => true,
-            'end_date' => (new \Datetime('first day of this month'))->format('Y-m-d H:i:s'),
+            'end_date' => (new \Datetime('first day of next month'))->format('Y-m-d H:i:s'),
             'created_at' => $createSeasonCommad->now() ?? new \Datetime()
         ];
 
