@@ -71,4 +71,9 @@ class EloquentUserRepository implements UserRepository
     {
         return UserWallets::update(['season_wallet' => 0]);
     }
+
+    public function findByEmailOrUsername($email, $username)
+    {
+        return User::orWhere('email', $email)->orWhere('username', $username)->first();
+    }
 }

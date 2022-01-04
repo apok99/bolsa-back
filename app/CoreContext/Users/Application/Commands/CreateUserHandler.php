@@ -16,6 +16,13 @@ class CreateUserHandler
 
     public function handle(CreateUser $user)
     {
+
+        $otherEmail = $this->userRepository->findByEmailOrUsername($user->email(), $user->username());
+
+        if ($otherEmail){
+          throw new \Exception('Username or email already exists.');
+        }
+
         $newUser = new User;
         $newUser->username = $user->username();
         $newUser->name = $user->name();

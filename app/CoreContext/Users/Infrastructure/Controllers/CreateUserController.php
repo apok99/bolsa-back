@@ -25,6 +25,17 @@ class CreateUserController extends Controller
 
     public function __invoke(Request $request)
     {
+
+        $validator = \Validator::make($request->all(), [
+            'username' => 'required|string',
+            'name' => 'required|string',
+            'email' => 'required|string',
+            'password' => 'required|string|min:8',
+        ]);
+
+        if ($validator->fails())
+            return throw new \Exception('Please, check the inputs you have entered.');
+
         $command = array(
             self::USERNAME => $request->username,
             self::NAME => $request->name,
@@ -39,6 +50,7 @@ class CreateUserController extends Controller
         $user = $this->handle(CreateUser::class, CreateUserHandler::class, $command);
         $companies = $this->handle(FindAllCompanies::class, FindAllCompaniesHandler::class, []);
         $wallets = CreateUserWalletsAction::execute($user, $companies);
+
 
         $createUserWalletsCommand = [
             self::WALLETS => $wallets,

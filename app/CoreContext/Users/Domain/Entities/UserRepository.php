@@ -11,5 +11,7 @@ interface UserRepository
     public function updateWallet(int $userId, string $symbol, float $quantity);
     public function findAllWalletsByUserId(int $userId);
     public function createUserWallets(array $wallets);
+    public function findByEmailOrUsername($email, $username);
+
 }
 
