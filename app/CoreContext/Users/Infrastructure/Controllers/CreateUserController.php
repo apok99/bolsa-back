@@ -43,7 +43,7 @@ class CreateUserController extends Controller
             self::PASSWORD => Hash::make($request->password, [
                 'cost' => 10
             ]),
-            self::MONEY => 100,
+            self::MONEY => 2000,
             self::SEASON_MONEY => 0,
        );
 
