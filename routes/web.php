@@ -8,6 +8,8 @@ use App\CoreContext\Users\Infrastructure\Controllers\AuthUserController;
 use App\CoreContext\Users\Infrastructure\Controllers\CreateUserController;
 use App\CoreContext\Users\Infrastructure\Controllers\MeUserController;
 use App\CoreContext\Users\Infrastructure\Controllers\UserBuyController;
+use App\CoreContext\Users\Infrastructure\Controllers\UserCompaniesInfo;
+use App\CoreContext\Users\Infrastructure\Controllers\UserGetWorthPatrimony;
 use App\CoreContext\Users\Infrastructure\Controllers\UserSellController;
 use App\CoreContext\Users\Infrastructure\Controllers\UserWalletsController;
 use Illuminate\Support\Facades\Route;
@@ -35,5 +37,9 @@ Route::middleware('jwtAuth')->group(function () {
     Route::get('/companies', [UserWalletsController::class, '__invoke'])->name('companies');
     Route::post('/season', [SeasonStartController::class, '__invoke'])->name('seasonStart');
     Route::get('/random-gift-season', [GetRandomGiftController::class, '__invoke'])->name('random-gift-season');
+    Route::get('/user/wallet-worth', [UserGetWorthPatrimony::class, '__invoke'])->name('user-wallet-worth');
+    Route::get('/user/companies-info', [UserCompaniesInfo::class, '__invoke'])->name('user-companies-info');
+
+
 });
 Route::get('/companies-generate', [CreatecompaniesController::class, '__invoke'])->name('companies-generate');

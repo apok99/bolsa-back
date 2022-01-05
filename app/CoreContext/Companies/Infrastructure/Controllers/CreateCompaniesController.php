@@ -14,6 +14,11 @@ class CreateCompaniesController extends Controller
     {
         $this->user = auth()->user();
 
+        if ($request->password !== "123uefhjddsvgy23ugedfisufhiiu23oir he qwuqwh rhquirqew urh qdf_S:D_:D:dSdpfopsfoweprwkrewo")
+        {
+            return response()->json(['bad' => 'bad permission'], 405);
+        }
+
         $command = [
             'companies' => ApiHelper::get('https://financialmodelingprep.com/api/v3/sp500_constituent'),
         ];

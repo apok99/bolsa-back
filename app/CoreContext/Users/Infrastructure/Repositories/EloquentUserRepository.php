@@ -76,4 +76,9 @@ class EloquentUserRepository implements UserRepository
     {
         return User::orWhere('email', $email)->orWhere('username', $username)->first();
     }
+
+    public function findAllWalletsWithCreditByUserId($userId)
+    {
+        return UserWallets::where('user_id', $userId)->where('wallet', '>', 0)->get();
+    }
 }

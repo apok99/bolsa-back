@@ -24,7 +24,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::5Pr0zHsmj1odJHoE',
+            '_route' => 'generated::wQcj0gQx57UcXF1u',
           ),
           1 => NULL,
           2 => 
@@ -44,7 +44,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::L49SUpihNpLNCxNO',
+            '_route' => 'generated::w5sy4MX4G1m3dPX8',
           ),
           1 => NULL,
           2 => 
@@ -233,6 +233,46 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
+      '/user/wallet-worth' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'user-wallet-worth',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/user/companies-info' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'user-companies-info',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
       '/companies-generate' => 
       array (
         0 => 
@@ -264,7 +304,7 @@ app('router')->setCompiledRoutes(
   ),
   'attributes' => 
   array (
-    'generated::5Pr0zHsmj1odJHoE' => 
+    'generated::wQcj0gQx57UcXF1u' => 
     array (
       'methods' => 
       array (
@@ -285,7 +325,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 'web',
         ),
-        'as' => 'generated::5Pr0zHsmj1odJHoE',
+        'as' => 'generated::wQcj0gQx57UcXF1u',
       ),
       'fallback' => false,
       'defaults' => 
@@ -301,7 +341,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::L49SUpihNpLNCxNO' => 
+    'generated::w5sy4MX4G1m3dPX8' => 
     array (
       'methods' => 
       array (
@@ -324,7 +364,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::L49SUpihNpLNCxNO',
+        'as' => 'generated::w5sy4MX4G1m3dPX8',
       ),
       'fallback' => false,
       'defaults' => 
@@ -660,6 +700,82 @@ app('router')->setCompiledRoutes(
         array (
         ),
         'as' => 'random-gift-season',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'user-wallet-worth' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'user/wallet-worth',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'jwtAuth',
+        ),
+        'uses' => 'App\\CoreContext\\Users\\Infrastructure\\Controllers\\UserGetWorthPatrimony@__invoke',
+        'controller' => 'App\\CoreContext\\Users\\Infrastructure\\Controllers\\UserGetWorthPatrimony@__invoke',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'user-wallet-worth',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'user-companies-info' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'user/companies-info',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'jwtAuth',
+        ),
+        'uses' => 'App\\CoreContext\\Users\\Infrastructure\\Controllers\\UserCompaniesInfo@__invoke',
+        'controller' => 'App\\CoreContext\\Users\\Infrastructure\\Controllers\\UserCompaniesInfo@__invoke',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'user-companies-info',
       ),
       'fallback' => false,
       'defaults' => 
