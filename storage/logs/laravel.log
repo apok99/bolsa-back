@@ -2574,3 +2574,18 @@
 #46 /Users/davidvictoria/PhpstormProjects/bolsa-back/app/server.php(21): require_once('/Users/davidvic...')
 #47 {main}
 "} 
+[2022-01-05 13:23:36] local.ERROR: Command "se" is ambiguous.
+Did you mean one of these?
+    session:table Create a migration for the session database table
+    serve         Serve the application on the PHP development server. {"exception":"[object] (Symfony\\Component\\Console\\Exception\\CommandNotFoundException(code: 0): Command \"se\" is ambiguous.
+Did you mean one of these?
+    session:table Create a migration for the session database table
+    serve         Serve the application on the PHP development server. at /Users/davidvictoria/PhpstormProjects/bolsa-back/app/vendor/symfony/console/Application.php:750)
+[stacktrace]
+#0 /Users/davidvictoria/PhpstormProjects/bolsa-back/app/vendor/symfony/console/Application.php(259): Symfony\\Component\\Console\\Application->find('se')
+#1 /Users/davidvictoria/PhpstormProjects/bolsa-back/app/vendor/symfony/console/Application.php(171): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#2 /Users/davidvictoria/PhpstormProjects/bolsa-back/app/vendor/laravel/framework/src/Illuminate/Console/Application.php(94): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#3 /Users/davidvictoria/PhpstormProjects/bolsa-back/app/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(129): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#4 /Users/davidvictoria/PhpstormProjects/bolsa-back/app/artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 {main}
+"} 
