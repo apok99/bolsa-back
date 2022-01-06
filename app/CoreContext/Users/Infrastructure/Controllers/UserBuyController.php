@@ -19,6 +19,15 @@ class UserBuyController extends Controller
 
     public function __invoke(Request $request)
     {
+
+        $validator = \Validator::make($request->all(), [
+            'cost' => 'required|gt:0'
+        ]);
+
+        if ($validator->fails()) {
+            throw new \Exception('Please send valid data.');
+        }
+
         $this->user = auth()->user();
 
         $query = [
