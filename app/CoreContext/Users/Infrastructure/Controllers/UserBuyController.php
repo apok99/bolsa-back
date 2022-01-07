@@ -8,7 +8,7 @@ use App\CoreContext\Users\Application\Commands\UserBuy;
 use App\CoreContext\Users\Application\Commands\UserBuyHandler;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Cache;
+    use Illuminate\Support\Facades\Cache;
 
 class UserBuyController extends Controller
 {
