@@ -36,7 +36,8 @@ class CreateUserDailyWorthArray
                 $worth += ($wallet->wallet * $companyPrice);
             }
 
-            $arrayInsert[] = ['user_id' => $user->id, 'worth' => $worth, 'date' => $now];
+            if($worth > 0)
+                $arrayInsert[] = ['user_id' => $user->id, 'worth' => $worth, 'date' => $now];
 
         }
 
