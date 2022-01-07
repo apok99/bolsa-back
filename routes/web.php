@@ -6,11 +6,13 @@ use App\CoreContext\Season\Infrastructure\Controllers\GetRandomGiftController;
 use App\CoreContext\Season\Infrastructure\Controllers\SeasonStartController;
 use App\CoreContext\Users\Infrastructure\Controllers\AuthUserController;
 use App\CoreContext\Users\Infrastructure\Controllers\CreateUserController;
+use App\CoreContext\Users\Infrastructure\Controllers\GetBestWorthDailyController;
 use App\CoreContext\Users\Infrastructure\Controllers\MeUserController;
 use App\CoreContext\Users\Infrastructure\Controllers\UserBuyController;
 use App\CoreContext\Users\Infrastructure\Controllers\UserCompaniesInfo;
 use App\CoreContext\Users\Infrastructure\Controllers\UserGetWorthPatrimony;
 use App\CoreContext\Users\Infrastructure\Controllers\UserSellController;
+use App\CoreContext\Users\Infrastructure\Controllers\UserTotalWorthDaily;
 use App\CoreContext\Users\Infrastructure\Controllers\UserWalletsController;
 use Illuminate\Support\Facades\Route;
 
@@ -39,7 +41,8 @@ Route::middleware('jwtAuth')->group(function () {
     Route::get('/random-gift-season', [GetRandomGiftController::class, '__invoke'])->name('random-gift-season');
     Route::get('/user/wallet-worth', [UserGetWorthPatrimony::class, '__invoke'])->name('user-wallet-worth');
     Route::get('/user/companies-info', [UserCompaniesInfo::class, '__invoke'])->name('user-companies-info');
-
-
+    Route::get('/users/best-worths', [GetBestWorthDailyController::class, '__invoke'])->name('get-best-worths');
 });
+Route::get('/daily-users-worth-cron', [UserTotalWorthDaily::class, '__invoke'])->name('daily-cron-user');
+
 Route::get('/companies-generate', [CreatecompaniesController::class, '__invoke'])->name('companies-generate');

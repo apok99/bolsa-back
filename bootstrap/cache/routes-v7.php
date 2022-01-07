@@ -24,7 +24,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::wQcj0gQx57UcXF1u',
+            '_route' => 'generated::mTwR2K4ZI6biktCq',
           ),
           1 => NULL,
           2 => 
@@ -44,7 +44,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::w5sy4MX4G1m3dPX8',
+            '_route' => 'generated::wJsKVZagZX8dvJEW',
           ),
           1 => NULL,
           2 => 
@@ -273,6 +273,46 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
+      '/users/best-worths' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'get-best-worths',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/daily-users-worth-cron' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'daily-cron-user',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
       '/companies-generate' => 
       array (
         0 => 
@@ -304,7 +344,7 @@ app('router')->setCompiledRoutes(
   ),
   'attributes' => 
   array (
-    'generated::wQcj0gQx57UcXF1u' => 
+    'generated::mTwR2K4ZI6biktCq' => 
     array (
       'methods' => 
       array (
@@ -325,7 +365,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 'web',
         ),
-        'as' => 'generated::wQcj0gQx57UcXF1u',
+        'as' => 'generated::mTwR2K4ZI6biktCq',
       ),
       'fallback' => false,
       'defaults' => 
@@ -341,7 +381,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::w5sy4MX4G1m3dPX8' => 
+    'generated::wJsKVZagZX8dvJEW' => 
     array (
       'methods' => 
       array (
@@ -364,7 +404,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::w5sy4MX4G1m3dPX8',
+        'as' => 'generated::wJsKVZagZX8dvJEW',
       ),
       'fallback' => false,
       'defaults' => 
@@ -776,6 +816,81 @@ app('router')->setCompiledRoutes(
         array (
         ),
         'as' => 'user-companies-info',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'get-best-worths' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'users/best-worths',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'jwtAuth',
+        ),
+        'uses' => 'App\\CoreContext\\Users\\Infrastructure\\Controllers\\GetBestWorthDailyController@__invoke',
+        'controller' => 'App\\CoreContext\\Users\\Infrastructure\\Controllers\\GetBestWorthDailyController@__invoke',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'get-best-worths',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'daily-cron-user' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'daily-users-worth-cron',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+        ),
+        'uses' => 'App\\CoreContext\\Users\\Infrastructure\\Controllers\\UserTotalWorthDaily@__invoke',
+        'controller' => 'App\\CoreContext\\Users\\Infrastructure\\Controllers\\UserTotalWorthDaily@__invoke',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'daily-cron-user',
       ),
       'fallback' => false,
       'defaults' => 

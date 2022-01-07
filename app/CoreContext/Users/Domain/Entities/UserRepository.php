@@ -13,5 +13,9 @@ interface UserRepository
     public function createUserWallets(array $wallets);
     public function findByEmailOrUsername($email, $username);
     public function findAllWalletsWithCreditByUserId($userId);
+    public function findAll();
+    public function createDailyWorth($data);
+    public function findBestWorthDailyUsersyDate($date);
+
 }
 

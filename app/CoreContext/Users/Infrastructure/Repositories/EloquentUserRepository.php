@@ -2,6 +2,7 @@
 
 namespace App\CoreContext\Users\Infrastructure\Repositories;
 
+use App\CoreContext\Users\Domain\Entities\DailyUserWorth;
 use App\CoreContext\Users\Domain\Entities\User;
 use App\CoreContext\Users\Domain\Entities\UserRepository;
 use App\CoreContext\Users\Domain\Entities\UserWallets;
@@ -80,5 +81,29 @@ class EloquentUserRepository implements UserRepository
     public function findAllWalletsWithCreditByUserId($userId)
     {
         return UserWallets::where('user_id', $userId)->where('wallet', '>', 0)->get();
+    }
+
+    public function insertDailyUserWorth($array)
+    {
+        return DailyUserWorth::insert($array);
+    }
+
+    public function findAll()
+    {
+        return User::with(['wallets', 'wallets.company'])->get();
+    }
+
+    public function createDailyWorth($data)
+    {
+        return DailyUserWorth::insert($data);
+    }
+
+    public function findBestWorthDailyUsersyDate($date)
+    {
+        return DailyUserWorth::with('user')
+            ->where('date', $date)
+            ->limit(150)
+            ->orderBy('worth', 'DESC')
+            ->get();
     }
 }

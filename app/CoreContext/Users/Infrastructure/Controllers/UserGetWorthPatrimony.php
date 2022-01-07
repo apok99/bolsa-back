@@ -20,8 +20,14 @@ class UserGetWorthPatrimony extends Controller
                 'user' => $user
             ]);
 
+
             $companies = ApiHelper::get('https://financialmodelingprep.com/api/v3/quote/'.$userWorth->string);
             $response = CreateArrayUserWorth::execute($userWorth->wallets, $companies);
+
+            $command = [
+                'user' => $user,
+                'worth' => $response
+            ];
 
             return response()->json(['worth' => $response]);
         }
