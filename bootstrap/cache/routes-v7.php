@@ -24,7 +24,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::VahgkyrKopa9i3S2',
+            '_route' => 'generated::OuE00wMgMBCh23m1',
           ),
           1 => NULL,
           2 => 
@@ -44,7 +44,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::2PTgMHNOMWGN8926',
+            '_route' => 'generated::SWcWJivFrZ43iO4g',
           ),
           1 => NULL,
           2 => 
@@ -230,26 +230,6 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      '/random-gift-season' => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'random-gift-season',
-          ),
-          1 => NULL,
-          2 => 
-          array (
-            'GET' => 0,
-            'HEAD' => 1,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => false,
-          6 => NULL,
-        ),
-      ),
       '/user/wallet-worth' => 
       array (
         0 => 
@@ -310,13 +290,13 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      '/daily-users-worth-cron' => 
+      '/companies-generate' => 
       array (
         0 => 
         array (
           0 => 
           array (
-            '_route' => 'daily-cron-user',
+            '_route' => 'companies-generate',
           ),
           1 => NULL,
           2 => 
@@ -330,13 +310,13 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      '/companies-generate' => 
+      '/hour' => 
       array (
         0 => 
         array (
           0 => 
           array (
-            '_route' => 'companies-generate',
+            '_route' => 'generated::EXRnOYahHRCjXwR0',
           ),
           1 => NULL,
           2 => 
@@ -361,7 +341,7 @@ app('router')->setCompiledRoutes(
   ),
   'attributes' => 
   array (
-    'generated::VahgkyrKopa9i3S2' => 
+    'generated::OuE00wMgMBCh23m1' => 
     array (
       'methods' => 
       array (
@@ -382,7 +362,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 'web',
         ),
-        'as' => 'generated::VahgkyrKopa9i3S2',
+        'as' => 'generated::OuE00wMgMBCh23m1',
       ),
       'fallback' => false,
       'defaults' => 
@@ -398,7 +378,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::2PTgMHNOMWGN8926' => 
+    'generated::SWcWJivFrZ43iO4g' => 
     array (
       'methods' => 
       array (
@@ -421,7 +401,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::2PTgMHNOMWGN8926',
+        'as' => 'generated::SWcWJivFrZ43iO4g',
       ),
       'fallback' => false,
       'defaults' => 
@@ -772,44 +752,6 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'random-gift-season' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'GET',
-        1 => 'HEAD',
-      ),
-      'uri' => 'random-gift-season',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'web',
-          1 => 'jwtAuth',
-        ),
-        'uses' => 'App\\CoreContext\\Season\\Infrastructure\\Controllers\\GetRandomGiftController@__invoke',
-        'controller' => 'App\\CoreContext\\Season\\Infrastructure\\Controllers\\GetRandomGiftController@__invoke',
-        'namespace' => NULL,
-        'prefix' => '',
-        'where' => 
-        array (
-        ),
-        'as' => 'random-gift-season',
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
     'user-wallet-worth' => 
     array (
       'methods' => 
@@ -924,43 +866,6 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'daily-cron-user' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'GET',
-        1 => 'HEAD',
-      ),
-      'uri' => 'daily-users-worth-cron',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'web',
-        ),
-        'uses' => 'App\\CoreContext\\Users\\Infrastructure\\Controllers\\UserTotalWorthDaily@__invoke',
-        'controller' => 'App\\CoreContext\\Users\\Infrastructure\\Controllers\\UserTotalWorthDaily@__invoke',
-        'namespace' => NULL,
-        'prefix' => '',
-        'where' => 
-        array (
-        ),
-        'as' => 'daily-cron-user',
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
     'companies-generate' => 
     array (
       'methods' => 
@@ -983,6 +888,45 @@ app('router')->setCompiledRoutes(
         array (
         ),
         'as' => 'companies-generate',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'generated::EXRnOYahHRCjXwR0' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'hour',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+        ),
+        'uses' => 'O:47:"Laravel\\SerializableClosure\\SerializableClosure":1:{s:12:"serializable";O:46:"Laravel\\SerializableClosure\\Serializers\\Signed":2:{s:12:"serializable";s:388:"O:46:"Laravel\\SerializableClosure\\Serializers\\Native":5:{s:3:"use";a:0:{}s:8:"function";s:169:"function(){
+    echo (new \\DateTime(\'now\', new \\DateTimeZone(\'Europe/Madrid\')))->format(\'d-M-Y H:i:s\').\'<br/>\';
+    echo (new \\DateTime(\'now\'))->format(\'d-M-Y H:i:s\');
+}";s:5:"scope";s:37:"Illuminate\\Routing\\RouteFileRegistrar";s:4:"this";N;s:4:"self";s:32:"00000000000006310000000000000000";}";s:4:"hash";s:44:"aokqIxaVNLZBYOkNXg1KUJPJ1+TSfWdD82sAgXxXyDQ=";}}',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'generated::EXRnOYahHRCjXwR0',
       ),
       'fallback' => false,
       'defaults' => 
