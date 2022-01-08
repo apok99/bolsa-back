@@ -21,12 +21,10 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')->hourly();
         $schedule->call('App\CoreContext\Users\Infrastructure\Controllers\UserTotalWorthDaily@__invoke')
             ->timezone('Europe/Madrid')
-            ->dailyAt('00:00')
+            ->dailyAt('23:55')
             ->runInBackground();
-
     }
 
     /**
