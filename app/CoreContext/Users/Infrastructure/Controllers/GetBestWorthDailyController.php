@@ -17,8 +17,13 @@ class GetBestWorthDailyController extends Controller
         if(Cache::has('dailyBestWorth')){
             $bestWorth = Cache::get('dailyBestWorth');
         }else{
+
             $bestWorth = $this->handle(FindBestWorthDailyUsers::class,FindBestWorthDailyUsersHandler::class, ['date' => (new \DateTime('Yesterday'))->format('Y-m-d 00:00:00')]);
-            Cache::put('dailyBestWorth', $bestWorth, Carbon::now()->endOfDay()->addSecond());
+
+            if (sizeof($bestWorth)){
+                Cache::put('dailyBestWorth', $bestWorth, Carbon::now()->endOfDay()->addSecond());
+            }
+
         }
 
         return response()->json($bestWorth);

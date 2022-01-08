@@ -11,7 +11,7 @@ class CreateUserDailyWorthArray
         $companiesInfo = ApiHelper::get('https://financialmodelingprep.com/api/v3/quote/' . StringCommedCompany::execute($companies));
 
         $arrayInsert = Array();
-        $now  = (new \DateTime('now'))->format('Y-m-d 00:00:00');
+        $now  = (new \DateTime('yesterday'))->format('Y-m-d 00:00:00');
 
         foreach ($users as $user)
         {
