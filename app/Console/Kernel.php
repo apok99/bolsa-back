@@ -24,7 +24,7 @@ class Kernel extends ConsoleKernel
         // $schedule->command('inspire')->hourly();
         $schedule->call('App\CoreContext\Users\Infrastructure\Controllers\UserTotalWorthDaily@__invoke')
             ->timezone('Europe/Madrid')
-            ->everyMinute()
+            ->dailyAt('00:00')
             ->runInBackground();
 
     }
