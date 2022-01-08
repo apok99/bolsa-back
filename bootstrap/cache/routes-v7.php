@@ -24,7 +24,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::mTwR2K4ZI6biktCq',
+            '_route' => 'generated::VahgkyrKopa9i3S2',
           ),
           1 => NULL,
           2 => 
@@ -44,7 +44,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::wJsKVZagZX8dvJEW',
+            '_route' => 'generated::2PTgMHNOMWGN8926',
           ),
           1 => NULL,
           2 => 
@@ -212,6 +212,23 @@ app('router')->setCompiledRoutes(
           5 => false,
           6 => NULL,
         ),
+        1 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'getSeason',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
       ),
       '/random-gift-season' => 
       array (
@@ -344,7 +361,7 @@ app('router')->setCompiledRoutes(
   ),
   'attributes' => 
   array (
-    'generated::mTwR2K4ZI6biktCq' => 
+    'generated::VahgkyrKopa9i3S2' => 
     array (
       'methods' => 
       array (
@@ -365,7 +382,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 'web',
         ),
-        'as' => 'generated::mTwR2K4ZI6biktCq',
+        'as' => 'generated::VahgkyrKopa9i3S2',
       ),
       'fallback' => false,
       'defaults' => 
@@ -381,7 +398,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::wJsKVZagZX8dvJEW' => 
+    'generated::2PTgMHNOMWGN8926' => 
     array (
       'methods' => 
       array (
@@ -404,7 +421,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::wJsKVZagZX8dvJEW',
+        'as' => 'generated::2PTgMHNOMWGN8926',
       ),
       'fallback' => false,
       'defaults' => 
@@ -702,6 +719,44 @@ app('router')->setCompiledRoutes(
         array (
         ),
         'as' => 'seasonStart',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'getSeason' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'season',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'jwtAuth',
+        ),
+        'uses' => 'App\\CoreContext\\Season\\Infrastructure\\Controllers\\GetSeasonController@__invoke',
+        'controller' => 'App\\CoreContext\\Season\\Infrastructure\\Controllers\\GetSeasonController@__invoke',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'getSeason',
       ),
       'fallback' => false,
       'defaults' => 
