@@ -24,7 +24,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::OuE00wMgMBCh23m1',
+            '_route' => 'generated::CWkzbr0suXTroH2Z',
           ),
           1 => NULL,
           2 => 
@@ -44,7 +44,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::SWcWJivFrZ43iO4g',
+            '_route' => 'generated::dvLaeW8v3Ezo29yD',
           ),
           1 => NULL,
           2 => 
@@ -230,6 +230,42 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
+      '/news' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'getNews',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+        1 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'filterGetNews',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'POST' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
       '/user/wallet-worth' => 
       array (
         0 => 
@@ -316,7 +352,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::EXRnOYahHRCjXwR0',
+            '_route' => 'generated::A3ZSaYMFIAE02hM2',
           ),
           1 => NULL,
           2 => 
@@ -341,7 +377,7 @@ app('router')->setCompiledRoutes(
   ),
   'attributes' => 
   array (
-    'generated::OuE00wMgMBCh23m1' => 
+    'generated::CWkzbr0suXTroH2Z' => 
     array (
       'methods' => 
       array (
@@ -362,7 +398,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 'web',
         ),
-        'as' => 'generated::OuE00wMgMBCh23m1',
+        'as' => 'generated::CWkzbr0suXTroH2Z',
       ),
       'fallback' => false,
       'defaults' => 
@@ -378,7 +414,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::SWcWJivFrZ43iO4g' => 
+    'generated::dvLaeW8v3Ezo29yD' => 
     array (
       'methods' => 
       array (
@@ -401,7 +437,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::SWcWJivFrZ43iO4g',
+        'as' => 'generated::dvLaeW8v3Ezo29yD',
       ),
       'fallback' => false,
       'defaults' => 
@@ -752,6 +788,81 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
+    'getNews' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'news',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'jwtAuth',
+        ),
+        'uses' => 'App\\CoreContext\\Companies\\Infrastructure\\Controllers\\GetNewsController@__invoke',
+        'controller' => 'App\\CoreContext\\Companies\\Infrastructure\\Controllers\\GetNewsController@__invoke',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'getNews',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'filterGetNews' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'POST',
+      ),
+      'uri' => 'news',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'jwtAuth',
+        ),
+        'uses' => 'App\\CoreContext\\Companies\\Infrastructure\\Controllers\\FilterNewsController@__invoke',
+        'controller' => 'App\\CoreContext\\Companies\\Infrastructure\\Controllers\\FilterNewsController@__invoke',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'filterGetNews',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
     'user-wallet-worth' => 
     array (
       'methods' => 
@@ -903,7 +1014,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::EXRnOYahHRCjXwR0' => 
+    'generated::A3ZSaYMFIAE02hM2' => 
     array (
       'methods' => 
       array (
@@ -926,7 +1037,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::EXRnOYahHRCjXwR0',
+        'as' => 'generated::A3ZSaYMFIAE02hM2',
       ),
       'fallback' => false,
       'defaults' => 

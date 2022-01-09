@@ -15,13 +15,13 @@ class AuthMiddleware extends BaseMiddleware
             $user = JWTAuth::parseToken()->authenticate();
 
         } catch (Tymon\JWTAuth\Exceptions\TokenExpiredException $e) {
-            return response()->json(['error' => true, 'message' => 'Token has expired.']);
+            return throw new \Exception('Not authorized.');
         } catch (Tymon\JWTAuth\Exceptions\TokenInvalidException $e) {
-            return response()->json(['error' => true, 'message' => 'Token is invalid.']);
+            return throw new \Exception('Not authorized.');
         } catch (Tymon\JWTAuth\Exceptions\JWTException $e) {
-            return response()->json(['error' => true, 'message' => 'Token has an exception.']);
+            return throw new \Exception('Not authorized.');
         }catch(\Exception $e){
-            return response()->json(['error' => true, 'message' => 'Please, login again.']);
+            return throw new \Exception('Not authorized.');
         }
         return $next($request);
     }

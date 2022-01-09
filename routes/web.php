@@ -1,6 +1,8 @@
 <?php
 
 use App\CoreContext\Companies\Infrastructure\Controllers\CreateCompaniesController;
+use App\CoreContext\Companies\Infrastructure\Controllers\FilterNewsController;
+use App\CoreContext\Companies\Infrastructure\Controllers\GetNewsController;
 use App\CoreContext\Season\Applicaction\Command\GetRandomGiftCommand;
 use App\CoreContext\Season\Infrastructure\Controllers\GetRandomGiftController;
 use App\CoreContext\Season\Infrastructure\Controllers\GetSeasonController;
@@ -33,6 +35,7 @@ Route::post('/user', [CreateUserController::class, '__invoke'])->name('createUse
 Route::post('/login', [AuthUserController::class, 'login'])->name('login');
 
 Route::middleware('jwtAuth')->group(callback: function () {
+
     Route::get('/me', [MeUserController::class, '__invoke'])->name('me');
     Route::post('/buy', [UserBuyController::class, '__invoke'])->name('buy');
     Route::post('/sell', UserSellController::class, '__invoke')->name('sell');
@@ -40,11 +43,14 @@ Route::middleware('jwtAuth')->group(callback: function () {
     Route::get('/companies', [UserWalletsController::class, '__invoke'])->name('companies');
     Route::post('/season', [SeasonStartController::class, '__invoke'])->name('seasonStart');
     Route::get('/season', [GetSeasonController::class, '__invoke'])->name('getSeason');
+    Route::get('/news', [GetNewsController::class, '__invoke'])->name('getNews');
+    Route::post('/news', [FilterNewsController::class, '__invoke'])->name('filterGetNews');
 
     //Route::get('/random-gift-season', [GetRandomGiftController::class, '__invoke'])->name('random-gift-season');
     Route::get('/user/wallet-worth', [UserGetWorthPatrimony::class, '__invoke'])->name('user-wallet-worth');
     Route::get('/user/companies-info', [UserCompaniesInfo::class, '__invoke'])->name('user-companies-info');
     Route::get('/users/best-worths', [GetBestWorthDailyController::class, '__invoke'])->name('get-best-worths');
+
 });
 //Route::get('/daily-users-worth-cron', [UserTotalWorthDaily::class, '__invoke'])->name('daily-cron-user');
 

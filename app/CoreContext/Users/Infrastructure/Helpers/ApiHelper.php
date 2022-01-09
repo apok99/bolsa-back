@@ -7,11 +7,16 @@ class ApiHelper
 
     const KEY = '?apikey=7b7863bc8a7b9c26334b80c2c8af9a7d';
 
-    public static function get($api)
+    public static function get($api, $apiurl = true)
     {
         set_time_limit(0);
 
-        $url_info = $api.self::KEY;
+        if ($apiurl){
+            $url_info = $api.self::KEY;
+        }else{
+            $url_info = $api;
+        }
+
         $channel = curl_init();
 
         curl_setopt($channel, CURLOPT_AUTOREFERER, TRUE);
