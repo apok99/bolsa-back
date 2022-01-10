@@ -106,4 +106,11 @@ class EloquentUserRepository implements UserRepository
             ->orderBy('worth', 'DESC')
             ->get();
     }
+
+    public function findHistoricalUserWorth($id)
+    {
+        return DailyUserWorth::where('user_id', $id)
+            ->orderBy('date', 'DESC')
+            ->get();
+    }
 }

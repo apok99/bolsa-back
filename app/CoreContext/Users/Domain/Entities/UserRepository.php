@@ -17,5 +17,7 @@ interface UserRepository
     public function createDailyWorth($data);
     public function findBestWorthDailyUsersyDate($date);
 
+    public function findHistoricalUserWorth($id);
+
 }
 
