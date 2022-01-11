@@ -8,9 +8,12 @@ use App\CoreContext\Season\Infrastructure\Controllers\GetRandomGiftController;
 use App\CoreContext\Season\Infrastructure\Controllers\GetSeasonController;
 use App\CoreContext\Season\Infrastructure\Controllers\SeasonStartController;
 use App\CoreContext\Users\Infrastructure\Controllers\AuthUserController;
+use App\CoreContext\Users\Infrastructure\Controllers\BankLoadDaily;
 use App\CoreContext\Users\Infrastructure\Controllers\CreateUserController;
+use App\CoreContext\Users\Infrastructure\Controllers\GetBankLoans;
 use App\CoreContext\Users\Infrastructure\Controllers\GetBestWorthDailyController;
 use App\CoreContext\Users\Infrastructure\Controllers\MeUserController;
+use App\CoreContext\Users\Infrastructure\Controllers\RequestBankLoadUser;
 use App\CoreContext\Users\Infrastructure\Controllers\UserBuyController;
 use App\CoreContext\Users\Infrastructure\Controllers\UserCompaniesInfo;
 use App\CoreContext\Users\Infrastructure\Controllers\UserGetHistoricalWorthsController;
@@ -52,6 +55,9 @@ Route::middleware('jwtAuth')->group(callback: function () {
     Route::get('/user/companies-info', [UserCompaniesInfo::class, '__invoke'])->name('user-companies-info');
     Route::get('/users/best-worths', [GetBestWorthDailyController::class, '__invoke'])->name('get-best-worths');
     Route::get('/user/historial-worths', [UserGetHistoricalWorthsController::class, '__invoke'])->name('user-get-historical-worths');
+    Route::post('/user/bank-loan', [RequestBankLoadUser::class, '__invoke'])->name('user-bank-loan-request');
+    Route::get('/bank-loan', [GetBankLoans::class, '__invoke'])->name('bank-loans');
+    Route::get('/daily-pay-bank', [BankLoadDaily::class, '__invoke'])->name('daily-pay-bank');
 
 });
 //Route::get('/daily-users-worth-cron', [UserTotalWorthDaily::class, '__invoke'])->name('daily-cron-user');

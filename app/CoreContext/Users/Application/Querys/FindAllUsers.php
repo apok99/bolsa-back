@@ -4,7 +4,6 @@ namespace App\CoreContext\Users\Application\Querys;
 
 class FindAllUsers
 {
-
     private $now;
 
     public function __construct($now)
@@ -16,7 +15,5 @@ class FindAllUsers
     {
         return $this->now;
     }
-
-
 
 }

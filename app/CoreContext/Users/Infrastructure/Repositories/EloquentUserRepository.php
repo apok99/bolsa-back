@@ -2,6 +2,8 @@
 
 namespace App\CoreContext\Users\Infrastructure\Repositories;
 
+use App\CoreContext\Users\Domain\Entities\BankLoan;
+use App\CoreContext\Users\Domain\Entities\BankLoanUsers;
 use App\CoreContext\Users\Domain\Entities\DailyUserWorth;
 use App\CoreContext\Users\Domain\Entities\User;
 use App\CoreContext\Users\Domain\Entities\UserRepository;
@@ -112,5 +114,46 @@ class EloquentUserRepository implements UserRepository
         return DailyUserWorth::where('user_id', $id)
             ->orderBy('date', 'DESC')
             ->get();
+    }
+
+    public function hasBankLoan($userId)
+    {
+        return BankLoanUsers::where('user_id', $userId)->first();
+    }
+
+    public function findLoan($loanId)
+    {
+        return BankLoan::find($loanId);
+    }
+
+    public function createUserLoan(array $newLoan)
+    {
+        return BankLoanUsers::insert($newLoan);
+    }
+
+    public function addMoney($id, $money)
+    {
+        return User::where('id', $id)->update(['money' => $money]);
+    }
+
+    public function findLoans()
+    {
+        return BankLoan::get();
+    }
+
+    public function findDailyLoans($now)
+    {
+        return BankLoanUsers::with(['user', 'loan'])->where('next_payment_date', $now)->get();
+    }
+
+    public function deleteLoan($id)
+    {
+        return BankLoanUsers::where('id', $id)->delete();
+    }
+
+    public function updateLoan($loan)
+    {
+        $loan->save();
+        return $loan;
     }
 }

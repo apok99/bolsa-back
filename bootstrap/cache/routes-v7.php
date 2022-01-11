@@ -24,7 +24,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::NDoTTbQtXT0jdDCT',
+            '_route' => 'generated::R2YUnJbOrJmUDGw4',
           ),
           1 => NULL,
           2 => 
@@ -44,7 +44,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::XuUUGbjMayqjAc37',
+            '_route' => 'generated::eddPNzBO4Q58JleS',
           ),
           1 => NULL,
           2 => 
@@ -346,6 +346,65 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
+      '/user/bank-loan' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'user-bank-loan-request',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'POST' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/bank-loan' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'bank-loans',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/daily-pay-bank' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'daily-pay-bank',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
       '/companies-generate' => 
       array (
         0 => 
@@ -372,7 +431,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::p6iPcIawKAsx8jv8',
+            '_route' => 'generated::tNFFL3ZJUZt3Uu1Q',
           ),
           1 => NULL,
           2 => 
@@ -397,7 +456,7 @@ app('router')->setCompiledRoutes(
   ),
   'attributes' => 
   array (
-    'generated::NDoTTbQtXT0jdDCT' => 
+    'generated::R2YUnJbOrJmUDGw4' => 
     array (
       'methods' => 
       array (
@@ -418,7 +477,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 'web',
         ),
-        'as' => 'generated::NDoTTbQtXT0jdDCT',
+        'as' => 'generated::R2YUnJbOrJmUDGw4',
       ),
       'fallback' => false,
       'defaults' => 
@@ -434,7 +493,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::XuUUGbjMayqjAc37' => 
+    'generated::eddPNzBO4Q58JleS' => 
     array (
       'methods' => 
       array (
@@ -451,13 +510,13 @@ app('router')->setCompiledRoutes(
         ),
         'uses' => 'O:47:"Laravel\\SerializableClosure\\SerializableClosure":1:{s:12:"serializable";O:46:"Laravel\\SerializableClosure\\Serializers\\Signed":2:{s:12:"serializable";s:295:"O:46:"Laravel\\SerializableClosure\\Serializers\\Native":5:{s:3:"use";a:0:{}s:8:"function";s:77:"function (\\Illuminate\\Http\\Request $request) {
     return $request->user();
-}";s:5:"scope";s:37:"Illuminate\\Routing\\RouteFileRegistrar";s:4:"this";N;s:4:"self";s:32:"00000000000006580000000000000000";}";s:4:"hash";s:44:"zz8aiPILMcQGjeSo4RNgWg5u1HP+Lq4zFpk7Xk2gaZE=";}}',
+}";s:5:"scope";s:37:"Illuminate\\Routing\\RouteFileRegistrar";s:4:"this";N;s:4:"self";s:32:"000000000000062c0000000000000000";}";s:4:"hash";s:44:"exuujPVEJQEaXNkZZn1OeGZXC+qKYU8OaTEuV1SawXk=";}}',
         'namespace' => NULL,
         'prefix' => 'api',
         'where' => 
         array (
         ),
-        'as' => 'generated::XuUUGbjMayqjAc37',
+        'as' => 'generated::eddPNzBO4Q58JleS',
       ),
       'fallback' => false,
       'defaults' => 
@@ -1035,6 +1094,119 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
+    'user-bank-loan-request' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'POST',
+      ),
+      'uri' => 'user/bank-loan',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'jwtAuth',
+        ),
+        'uses' => 'App\\CoreContext\\Users\\Infrastructure\\Controllers\\RequestBankLoadUser@__invoke',
+        'controller' => 'App\\CoreContext\\Users\\Infrastructure\\Controllers\\RequestBankLoadUser@__invoke',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'user-bank-loan-request',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'bank-loans' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'bank-loan',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'jwtAuth',
+        ),
+        'uses' => 'App\\CoreContext\\Users\\Infrastructure\\Controllers\\GetBankLoans@__invoke',
+        'controller' => 'App\\CoreContext\\Users\\Infrastructure\\Controllers\\GetBankLoans@__invoke',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'bank-loans',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'daily-pay-bank' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'daily-pay-bank',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'jwtAuth',
+        ),
+        'uses' => 'App\\CoreContext\\Users\\Infrastructure\\Controllers\\BankLoadDaily@__invoke',
+        'controller' => 'App\\CoreContext\\Users\\Infrastructure\\Controllers\\BankLoadDaily@__invoke',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'daily-pay-bank',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
     'companies-generate' => 
     array (
       'methods' => 
@@ -1072,7 +1244,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::p6iPcIawKAsx8jv8' => 
+    'generated::tNFFL3ZJUZt3Uu1Q' => 
     array (
       'methods' => 
       array (
@@ -1089,13 +1261,13 @@ app('router')->setCompiledRoutes(
         'uses' => 'O:47:"Laravel\\SerializableClosure\\SerializableClosure":1:{s:12:"serializable";O:46:"Laravel\\SerializableClosure\\Serializers\\Signed":2:{s:12:"serializable";s:388:"O:46:"Laravel\\SerializableClosure\\Serializers\\Native":5:{s:3:"use";a:0:{}s:8:"function";s:169:"function(){
     echo (new \\DateTime(\'now\', new \\DateTimeZone(\'Europe/Madrid\')))->format(\'d-M-Y H:i:s\').\'<br/>\';
     echo (new \\DateTime(\'now\'))->format(\'d-M-Y H:i:s\');
-}";s:5:"scope";s:37:"Illuminate\\Routing\\RouteFileRegistrar";s:4:"this";N;s:4:"self";s:32:"000000000000065d0000000000000000";}";s:4:"hash";s:44:"kM6DDF5sJulztYTeZqVYMnBoq1DI3rdiR6ZtNhMAnuk=";}}',
+}";s:5:"scope";s:37:"Illuminate\\Routing\\RouteFileRegistrar";s:4:"this";N;s:4:"self";s:32:"00000000000006310000000000000000";}";s:4:"hash";s:44:"aokqIxaVNLZBYOkNXg1KUJPJ1+TSfWdD82sAgXxXyDQ=";}}',
         'namespace' => NULL,
         'prefix' => '',
         'where' => 
         array (
         ),
-        'as' => 'generated::p6iPcIawKAsx8jv8',
+        'as' => 'generated::tNFFL3ZJUZt3Uu1Q',
       ),
       'fallback' => false,
       'defaults' => 

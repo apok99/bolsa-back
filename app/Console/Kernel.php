@@ -25,6 +25,12 @@ class Kernel extends ConsoleKernel
             ->timezone('Europe/Madrid')
             ->dailyAt('23:55')
             ->runInBackground();
+
+
+        $schedule->call('App\CoreContext\Users\Infrastructure\Controllers\BankLoadDaily@__invoke')
+            ->timezone('Europe/Madrid')
+            ->dailyAt('23:55')
+            ->runInBackground();
     }
 
     /**
