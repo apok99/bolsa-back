@@ -37,7 +37,7 @@ class CreateUserDailyWorthArray
             }
 
             if($worth > 0)
-                $arrayInsert[] = ['user_id' => $user->id, 'worth' => $worth, 'date' => $now];
+                $arrayInsert[] = ['user_id' => $user->id, 'worth' => $worth + $user->money, 'date' => $now];
 
         }
 
