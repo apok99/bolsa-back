@@ -19,18 +19,17 @@ interface UserRepository
     public function findHistoricalUserWorth($id);
     public function hasBankLoan($userId);
     public function findLoan($loadId);
-
     public function createUserLoan(array $newLoan);
-
     public function addMoney($id, $param);
-
     public function findLoans();
-
     public function findDailyLoans($now);
-
     public function deleteLoan($id);
-
     public function updateLoan($loan);
+    public function findAllUserBusinessRewardToday($date);
+
+    public function findBusinessByIdAndUser(string $business, $user, string $date);
+
+    public function updateUserBusiness($id, $cooldown);
 
 
 }

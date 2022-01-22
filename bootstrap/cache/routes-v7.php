@@ -24,7 +24,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::R2YUnJbOrJmUDGw4',
+            '_route' => 'generated::xx53JcJN9yGaDi6Y',
           ),
           1 => NULL,
           2 => 
@@ -44,7 +44,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::eddPNzBO4Q58JleS',
+            '_route' => 'generated::XUCyhDemHKoybW1s',
           ),
           1 => NULL,
           2 => 
@@ -405,6 +405,26 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
+      '/redeem-business' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'redeem-business',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
       '/companies-generate' => 
       array (
         0 => 
@@ -431,7 +451,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::tNFFL3ZJUZt3Uu1Q',
+            '_route' => 'generated::UNiTcGeeX0WxQxFj',
           ),
           1 => NULL,
           2 => 
@@ -456,7 +476,7 @@ app('router')->setCompiledRoutes(
   ),
   'attributes' => 
   array (
-    'generated::R2YUnJbOrJmUDGw4' => 
+    'generated::xx53JcJN9yGaDi6Y' => 
     array (
       'methods' => 
       array (
@@ -477,7 +497,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 'web',
         ),
-        'as' => 'generated::R2YUnJbOrJmUDGw4',
+        'as' => 'generated::xx53JcJN9yGaDi6Y',
       ),
       'fallback' => false,
       'defaults' => 
@@ -493,7 +513,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::eddPNzBO4Q58JleS' => 
+    'generated::XUCyhDemHKoybW1s' => 
     array (
       'methods' => 
       array (
@@ -516,7 +536,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::eddPNzBO4Q58JleS',
+        'as' => 'generated::XUCyhDemHKoybW1s',
       ),
       'fallback' => false,
       'defaults' => 
@@ -1207,6 +1227,44 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
+    'redeem-business' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'redeem-business',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'jwtAuth',
+        ),
+        'uses' => 'App\\CoreContext\\Users\\Infrastructure\\Controllers\\RedeemBusiness@__invoke',
+        'controller' => 'App\\CoreContext\\Users\\Infrastructure\\Controllers\\RedeemBusiness@__invoke',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'redeem-business',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
     'companies-generate' => 
     array (
       'methods' => 
@@ -1244,7 +1302,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::tNFFL3ZJUZt3Uu1Q' => 
+    'generated::UNiTcGeeX0WxQxFj' => 
     array (
       'methods' => 
       array (
@@ -1267,7 +1325,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::tNFFL3ZJUZt3Uu1Q',
+        'as' => 'generated::UNiTcGeeX0WxQxFj',
       ),
       'fallback' => false,
       'defaults' => 

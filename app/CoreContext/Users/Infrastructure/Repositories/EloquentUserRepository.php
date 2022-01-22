@@ -4,6 +4,7 @@ namespace App\CoreContext\Users\Infrastructure\Repositories;
 
 use App\CoreContext\Users\Domain\Entities\BankLoan;
 use App\CoreContext\Users\Domain\Entities\BankLoanUsers;
+use App\CoreContext\Users\Domain\Entities\BusinessUsers;
 use App\CoreContext\Users\Domain\Entities\DailyUserWorth;
 use App\CoreContext\Users\Domain\Entities\User;
 use App\CoreContext\Users\Domain\Entities\UserRepository;
@@ -155,5 +156,28 @@ class EloquentUserRepository implements UserRepository
     {
         $loan->save();
         return $loan;
+    }
+
+    public function findAllUserBusinessRewardToday($date)
+    {
+        return BusinessUsers::with(['user', 'business'])->where('reward_date', $date)->get();
+    }
+
+    public function findBusinessByIdAndUser(string $business, $user, string $date)
+    {
+        return BusinessUsers::with(['user', 'business'])
+            ->where('user_id', $user->id)
+            ->where('business_id', $business)
+            ->where('reward_date', $date)
+            ->first();
+    }
+
+    public function updateUserBusiness($id, $cooldown)
+    {
+        return BusinessUsers::where('id', $id)->update(
+            [
+                'reward_date' => (new \Datetime($cooldown.' days', new \DateTimeZone('Europe/Madrid')))->format('Y-m-d 23:55:00')
+            ]
+        );
     }
 }

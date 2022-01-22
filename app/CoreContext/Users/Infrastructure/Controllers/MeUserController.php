@@ -10,6 +10,6 @@ use Illuminate\Http\Request;
 class MeUserController extends Controller
 {
     public function __invoke(Request $request){
-        return response(auth()->user()  );
+        return response(auth()->user());
     }
 }
