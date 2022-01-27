@@ -1,0 +1,25 @@
+<?php
+
+namespace App\CoreContext\User\Infrastructure\Action;
+
+use App\CoreContext\User\Domain\Entity\User;
+use App\CoreContext\User\Infrastructure\Helper\ApiHelper;
+
+class CreateUserWalletsAction
+{
+    public static function execute($user, $companies): array
+    {
+        $wallets = [];
+
+        foreach ($companies as $company){
+            $wallets[] = [
+                'user_id' => $user->id,
+                'company_id' => $company->id,
+                'wallet' => 0,
+                'season_wallet' => 0
+            ];
+        }
+
+        return $wallets;
+    }
+}

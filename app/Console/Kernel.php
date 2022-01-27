@@ -2,7 +2,6 @@
 
 namespace App\Console;
 
-use App\CoreContext\Users\Infrastructure\Controllers\UserGetWorthPatrimony;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 

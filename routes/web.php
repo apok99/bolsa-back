@@ -1,31 +1,29 @@
 <?php
 
-use App\CoreContext\Companies\Infrastructure\Controllers\CreateCompaniesController;
-use App\CoreContext\Companies\Infrastructure\Controllers\FilterNewsController;
-use App\CoreContext\Companies\Infrastructure\Controllers\GetNewsController;
+use App\CoreContext\Company\Infrastructure\Controller\CreateCompaniesController;
+use App\CoreContext\Company\Infrastructure\Controller\FilterNewsController;
+use App\CoreContext\Company\Infrastructure\Controller\GetNewsController;
 use App\CoreContext\Season\Applicaction\Command\GetRandomGiftCommand;
-use App\CoreContext\Season\Infrastructure\Controllers\GetRandomGiftController;
-use App\CoreContext\Season\Infrastructure\Controllers\GetSeasonController;
-use App\CoreContext\Season\Infrastructure\Controllers\SeasonStartController;
-use App\CoreContext\Users\Infrastructure\Controllers\AuthUserController;
-use App\CoreContext\Users\Infrastructure\Controllers\BankLoadDaily;
-use App\CoreContext\Users\Infrastructure\Controllers\BuyBusinessController;
-use App\CoreContext\Users\Infrastructure\Controllers\CreateUserController;
-use App\CoreContext\Users\Infrastructure\Controllers\GetAllBusinessController;
-use App\CoreContext\Users\Infrastructure\Controllers\GetBankLoans;
-use App\CoreContext\Users\Infrastructure\Controllers\GetBestWorthDailyController;
-use App\CoreContext\Users\Infrastructure\Controllers\GetBusinessController;
-use App\CoreContext\Users\Infrastructure\Controllers\MeUserController;
-use App\CoreContext\Users\Infrastructure\Controllers\RedeemBusineess;
-use App\CoreContext\Users\Infrastructure\Controllers\RedeemBusiness;
-use App\CoreContext\Users\Infrastructure\Controllers\RequestBankLoadUser;
-use App\CoreContext\Users\Infrastructure\Controllers\UserBuyController;
-use App\CoreContext\Users\Infrastructure\Controllers\UserCompaniesInfo;
-use App\CoreContext\Users\Infrastructure\Controllers\UserGetHistoricalWorthsController;
-use App\CoreContext\Users\Infrastructure\Controllers\UserGetWorthPatrimony;
-use App\CoreContext\Users\Infrastructure\Controllers\UserSellController;
-use App\CoreContext\Users\Infrastructure\Controllers\UserTotalWorthDaily;
-use App\CoreContext\Users\Infrastructure\Controllers\UserWalletsController;
+use App\CoreContext\Season\Infrastructure\Controller\GetSeasonController;
+use App\CoreContext\Season\Infrastructure\Controller\SeasonStartController;
+use App\CoreContext\User\Infrastructure\Controller\AuthUserController;
+use App\CoreContext\User\Infrastructure\Controller\BankLoadDaily;
+use App\CoreContext\User\Infrastructure\Controller\BuyBusinessController;
+use App\CoreContext\User\Infrastructure\Controller\CreateUserController;
+use App\CoreContext\User\Infrastructure\Controller\GetAllBusinessController;
+use App\CoreContext\User\Infrastructure\Controller\GetBankLoans;
+use App\CoreContext\User\Infrastructure\Controller\GetBestWorthDailyController;
+use App\CoreContext\User\Infrastructure\Controller\GetBusinessController;
+use App\CoreContext\User\Infrastructure\Controller\MeUserController;
+use App\CoreContext\User\Infrastructure\Controller\RedeemBusineess;
+use App\CoreContext\User\Infrastructure\Controller\RedeemBusiness;
+use App\CoreContext\User\Infrastructure\Controller\RequestBankLoadUser;
+use App\CoreContext\User\Infrastructure\Controller\UserBuyController;
+use App\CoreContext\User\Infrastructure\Controller\UserCompaniesInfo;
+use App\CoreContext\User\Infrastructure\Controller\UserGetHistoricalWorthsController;
+use App\CoreContext\User\Infrastructure\Controller\UserGetWorthPatrimony;
+use App\CoreContext\User\Infrastructure\Controller\UserSellController;
+use App\CoreContext\User\Infrastructure\Controller\UserWalletsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -47,7 +45,7 @@ Route::middleware('jwtAuth')->group(callback: function () {
 
     Route::get('/me', [MeUserController::class, '__invoke'])->name('me');
     Route::post('/buy', [UserBuyController::class, '__invoke'])->name('buy');
-    Route::post('/sell', UserSellController::class, '__invoke')->name('sell');
+    Route::post('/sell', [UserSellController::class, '__invoke'])->name('sell');
     Route::get('/users/wallets', [UserWalletsController::class, '__invoke'])->name('users-wallets');
     Route::get('/companies', [UserWalletsController::class, '__invoke'])->name('companies');
     Route::post('/season', [SeasonStartController::class, '__invoke'])->name('seasonStart');
@@ -71,8 +69,8 @@ Route::middleware('jwtAuth')->group(callback: function () {
 });
 //Route::get('/daily-users-worth-cron', [UserTotalWorthDaily::class, '__invoke'])->name('daily-cron-user');
 
-Route::get('/companies-generate', [CreatecompaniesController::class, '__invoke'])->name('companies-generate');
-Route::get('/hour', function(){
+Route::get('/companies-generate', [CreateCompaniesController::class, '__invoke'])->name('companies-generate');
+Route::get('/hour', static function() {
     echo (new \DateTime('now', new \DateTimeZone('Europe/Madrid')))->format('d-M-Y H:i:s').'<br/>';
     echo (new \DateTime('now'))->format('d-M-Y H:i:s');
 });

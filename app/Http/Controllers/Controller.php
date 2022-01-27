@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\CoreContext\Users\Application\Commands\CreateUser;
-use App\CoreContext\Users\Application\Commands\CreateUserHandler;
+use App\CoreContext\User\Application\Command\CreateUser;
+use App\CoreContext\User\Application\Command\CreateUserHandler;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
