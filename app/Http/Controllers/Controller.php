@@ -26,7 +26,8 @@ class Controller extends BaseController
         return $this->bus;
     }
 
-    public function handle($command,  $handler, array $data){
+    public function handle($command,  $handler, array $data)
+    {
         $this->bus->addHandler($command, $handler);
         return $this->bus->dispatch($command, $data);
     }

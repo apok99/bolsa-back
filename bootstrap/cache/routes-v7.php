@@ -24,7 +24,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::xx53JcJN9yGaDi6Y',
+            '_route' => 'generated::1xtTZE77Tml9ti41',
           ),
           1 => NULL,
           2 => 
@@ -44,7 +44,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::XUCyhDemHKoybW1s',
+            '_route' => 'generated::S5A85SS9FIaPGc4A',
           ),
           1 => NULL,
           2 => 
@@ -425,6 +425,42 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
+      '/business' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'get-business',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+        1 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'buy-business',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'POST' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
       '/companies-generate' => 
       array (
         0 => 
@@ -451,7 +487,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::UNiTcGeeX0WxQxFj',
+            '_route' => 'generated::G2zb4Y8vsX5xkEwM',
           ),
           1 => NULL,
           2 => 
@@ -476,7 +512,7 @@ app('router')->setCompiledRoutes(
   ),
   'attributes' => 
   array (
-    'generated::xx53JcJN9yGaDi6Y' => 
+    'generated::1xtTZE77Tml9ti41' => 
     array (
       'methods' => 
       array (
@@ -497,7 +533,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 'web',
         ),
-        'as' => 'generated::xx53JcJN9yGaDi6Y',
+        'as' => 'generated::1xtTZE77Tml9ti41',
       ),
       'fallback' => false,
       'defaults' => 
@@ -513,7 +549,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::XUCyhDemHKoybW1s' => 
+    'generated::S5A85SS9FIaPGc4A' => 
     array (
       'methods' => 
       array (
@@ -536,7 +572,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::XUCyhDemHKoybW1s',
+        'as' => 'generated::S5A85SS9FIaPGc4A',
       ),
       'fallback' => false,
       'defaults' => 
@@ -1265,6 +1301,81 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
+    'get-business' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'business',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'jwtAuth',
+        ),
+        'uses' => 'App\\CoreContext\\Users\\Infrastructure\\Controllers\\GetAllBusinessController@__invoke',
+        'controller' => 'App\\CoreContext\\Users\\Infrastructure\\Controllers\\GetAllBusinessController@__invoke',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'get-business',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'buy-business' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'POST',
+      ),
+      'uri' => 'business',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'jwtAuth',
+        ),
+        'uses' => 'App\\CoreContext\\Users\\Infrastructure\\Controllers\\BuyBusinessController@__invoke',
+        'controller' => 'App\\CoreContext\\Users\\Infrastructure\\Controllers\\BuyBusinessController@__invoke',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'buy-business',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
     'companies-generate' => 
     array (
       'methods' => 
@@ -1302,7 +1413,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::UNiTcGeeX0WxQxFj' => 
+    'generated::G2zb4Y8vsX5xkEwM' => 
     array (
       'methods' => 
       array (
@@ -1325,7 +1436,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::UNiTcGeeX0WxQxFj',
+        'as' => 'generated::G2zb4Y8vsX5xkEwM',
       ),
       'fallback' => false,
       'defaults' => 

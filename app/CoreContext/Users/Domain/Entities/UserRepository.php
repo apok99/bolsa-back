@@ -31,6 +31,14 @@ interface UserRepository
 
     public function updateUserBusiness($id, $cooldown);
 
+    public function findAllBusiness();
+
+    public function buyBusiness(string $businessId, $userId);
+
+    public function findBusiness(string $businessId);
+
+    public function userHasBusiness($userId, $businessId);
+
 
 }
 

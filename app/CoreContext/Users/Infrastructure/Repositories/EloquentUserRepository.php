@@ -4,6 +4,7 @@ namespace App\CoreContext\Users\Infrastructure\Repositories;
 
 use App\CoreContext\Users\Domain\Entities\BankLoan;
 use App\CoreContext\Users\Domain\Entities\BankLoanUsers;
+use App\CoreContext\Users\Domain\Entities\Business;
 use App\CoreContext\Users\Domain\Entities\BusinessUsers;
 use App\CoreContext\Users\Domain\Entities\DailyUserWorth;
 use App\CoreContext\Users\Domain\Entities\User;
@@ -168,7 +169,7 @@ class EloquentUserRepository implements UserRepository
         return BusinessUsers::with(['user', 'business'])
             ->where('user_id', $user->id)
             ->where('business_id', $business)
-            ->where('reward_date', $date)
+            ->where('reward_date', '<=', $date)
             ->first();
     }
 
@@ -176,8 +177,34 @@ class EloquentUserRepository implements UserRepository
     {
         return BusinessUsers::where('id', $id)->update(
             [
-                'reward_date' => (new \Datetime($cooldown.' days', new \DateTimeZone('Europe/Madrid')))->format('Y-m-d 23:55:00')
+                'reward_date' => (new \Datetime($cooldown.' days', new \DateTimeZone('Europe/Madrid')))->format('Y-m-d H:i:s')
             ]
         );
+    }
+
+    public function findAllBusiness()
+    {
+        return Business::all();
+    }
+
+    public function buyBusiness(string $businessId, $userId)
+    {
+
+        return BusinessUsers::insert([
+            'user_id' => $userId,
+            'business_id' => $businessId,
+            'reward_date' => (new \Datetime('+1 day', new \DateTimeZone('Europe/Madrid')))->format('Y-m-d H:i:s')
+
+        ]);
+    }
+
+    public function findBusiness(string $businessId)
+    {
+        return Business::find($businessId);
+    }
+
+    public function userHasBusiness($userId, $businessId)
+    {
+        return BusinessUsers::where('user_id', $userId)->where('business_id', $businessId)->first();
     }
 }

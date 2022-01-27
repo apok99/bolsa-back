@@ -16,7 +16,7 @@ class RedeemBusiness extends Controller
         $user = auth()->user();
 
         $business = $this->handle(FindAllUsersWithBusiness::class, FindAllUsersWithBusinessHandler::class, [
-            'now' => (new \DateTime('now', new \DateTimeZone('Europe/Madrid')))->format('Y-m-d 23:55:00'),
+            'now' => (new \DateTime('now', new \DateTimeZone('Europe/Madrid')))->format('Y-m-d H:i:s'),
             'business' => $request->business,
             'user' => $user
         ]);

@@ -9,7 +9,9 @@ use App\CoreContext\Season\Infrastructure\Controllers\GetSeasonController;
 use App\CoreContext\Season\Infrastructure\Controllers\SeasonStartController;
 use App\CoreContext\Users\Infrastructure\Controllers\AuthUserController;
 use App\CoreContext\Users\Infrastructure\Controllers\BankLoadDaily;
+use App\CoreContext\Users\Infrastructure\Controllers\BuyBusinessController;
 use App\CoreContext\Users\Infrastructure\Controllers\CreateUserController;
+use App\CoreContext\Users\Infrastructure\Controllers\GetAllBusinessController;
 use App\CoreContext\Users\Infrastructure\Controllers\GetBankLoans;
 use App\CoreContext\Users\Infrastructure\Controllers\GetBestWorthDailyController;
 use App\CoreContext\Users\Infrastructure\Controllers\GetBusinessController;
@@ -63,6 +65,8 @@ Route::middleware('jwtAuth')->group(callback: function () {
     Route::get('/daily-pay-bank', [BankLoadDaily::class, '__invoke'])->name('daily-pay-bank');
 
     Route::get('/redeem-business', [RedeemBusiness::class, '__invoke'])->name('redeem-business');
+    Route::get('/business', [GetAllBusinessController::class, '__invoke'])->name('get-business');
+    Route::post('/business', [BuyBusinessController::class, '__invoke'])->name('buy-business');
 
 });
 //Route::get('/daily-users-worth-cron', [UserTotalWorthDaily::class, '__invoke'])->name('daily-cron-user');
