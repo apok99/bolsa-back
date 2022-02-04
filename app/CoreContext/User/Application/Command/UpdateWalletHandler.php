@@ -10,6 +10,6 @@ class UpdateWalletHandler
 
     public function handle(UpdateWallet $updateWallet)
     {
-        $this->userRepository->addToTypeWallet($updateWallet->user()->id, $updateWallet->symbol(), $updateWallet->quantity(), $updateWallet->)
+        //$this->userRepository->addToTypeWallet($updateWallet->user()->id, $updateWallet->symbol(), $updateWallet->quantity(), $updateWallet->)
     }
 }
