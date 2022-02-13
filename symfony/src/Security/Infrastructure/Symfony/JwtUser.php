@@ -12,7 +12,8 @@ class JwtUser implements UserInterface, PasswordAuthenticatedUserInterface
     public function __construct(
         private string $userId,
         private string $email,
-        private string $hashedPassword
+        private string $hashedPassword,
+        private array $roles
     )
     {
     }
@@ -24,11 +25,16 @@ class JwtUser implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function getRoles(): array
     {
-        return [];
+        return $this->roles;
     }
 
     public function eraseCredentials()
     {
+    }
+
+    public function email(): string
+    {
+        return $this->email;
     }
 
     public function getUserIdentifier(): string

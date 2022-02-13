@@ -1,12 +1,12 @@
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping">
     <entity name="App\User\Domain\Model\User"
-            table="user_user"
             repository-class="App\User\Infrastructure\ORM\Repository\DoctrineUserRepository"
     >
-        <id name="id" type="guid"/>
+        <id name="id" type="uuid_binary"/>
         <field name="username" unique="true"/>
         <embedded name="email" class="App\Shared\Domain\ValueObject\Email" use-column-prefix="false" />
         <field name="password" nullable="true"/>
+        <field name="roles" type="json"/>
         <field name="createdAt" type="carbon">
             <options>
                 <option name="charset">ascii</option>

@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\User\Domain\Model;
 
+use App\Shared\Domain\ValueObject\Email;
 use Carbon\CarbonImmutable;
 use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidInterface;
@@ -11,7 +12,7 @@ class User
 {
     private UuidInterface $id;
     private string $username;
-    private string $email;
+    private Email $email;
     private string $password;
     private array $roles;
     private CarbonImmutable $createdAt;
@@ -20,7 +21,7 @@ class User
 
     public function __construct(
         string $username,
-        string $email,
+        Email $email,
         string $password,
         array $roles = []
     )
@@ -44,7 +45,7 @@ class User
         return $this->username;
     }
 
-    public function email(): string
+    public function email(): Email
     {
         return $this->email;
     }

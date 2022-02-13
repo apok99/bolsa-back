@@ -39,8 +39,9 @@ final class JwtUserProvider implements UserProviderInterface
 
         return new JwtUser(
             $user->id()->toString(),
-            $user->email(),
-            $user->password()
+            $user->email()->value(),
+            $user->password(),
+            $user->roles()
         );
     }
 }

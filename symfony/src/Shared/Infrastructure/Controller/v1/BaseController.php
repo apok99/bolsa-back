@@ -6,24 +6,27 @@ namespace App\Shared\Infrastructure\Controller\v1;
 
 use App\Shared\Application\Bus\CommandBus;
 use App\Shared\Application\Bus\QueryBus;
+use App\Shared\Infrastructure\Controller\BaseRequest;
+use App\Api\Infrastructure\JsonApiResponseFactory;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\RequestStack;
 
 class BaseController extends AbstractController
 {
-    public ?Request $request;
+    public BaseRequest $request;
     public CommandBus $commandBus;
     public QueryBus $queryBus;
+    public JsonApiResponseFactory $jsonApiResponseFactory;
 
     public function __construct(
-        RequestStack $requestStack,
+        BaseRequest $request,
         CommandBus $commandBus,
-        QueryBus $queryBus
+        QueryBus $queryBus,
+        JsonApiResponseFactory $jsonApiResponseFactory
     )
     {
-        $this->request = $requestStack->getCurrentRequest();
+        $this->request = $request;
         $this->commandBus = $commandBus;
         $this->queryBus = $queryBus;
+        $this->jsonApiResponseFactory = $jsonApiResponseFactory;
     }
 }

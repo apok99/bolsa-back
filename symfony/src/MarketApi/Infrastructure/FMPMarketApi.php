@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\MarketApi\Infrastructure;
 
-use App\MarketApi\Domain\MarketApiInterface;
+use App\MarketApi\Domain\MarketApi;
 
-class FMPMarketApi implements MarketApiInterface
+class FMPMarketApi implements MarketApi
 {
 
 }

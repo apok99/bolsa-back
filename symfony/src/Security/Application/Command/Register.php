@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Security\Application\Command;
 
 use App\Shared\Application\Command\Command;
+use App\Shared\Domain\ValueObject\Email;
 
 class Register implements Command
 {
@@ -21,9 +22,9 @@ class Register implements Command
         return $this->username;
     }
 
-    public function email(): string
+    public function email(): Email
     {
-        return $this->email;
+        return new Email($this->email);
     }
 
     public function password(): string

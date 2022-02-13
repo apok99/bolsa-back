@@ -2,27 +2,34 @@
 
 namespace App\Shared\Domain\ValueObject;
 
-class Email
+use App\Shared\Domain\Exception\InvalidEmailException;
+use App\Shared\Domain\Validator\ValueObject;
+
+class Email implements ValueObject
 {
-    protected string $email;
+    protected string $value;
 
-    public function __construct(string $email)
+    public function __construct(string $value)
     {
-        if (!filter_var($email, FILTER_VALIDATE_EMAIL))
-        {
-            throw new \InvalidEmailException();
-        }
+        self::validate($value);
+        $this->value = $value;
+    }
 
-        $this->email = $email;
+    public static function validate(string $value)
+    {
+        if (!filter_var($value, FILTER_VALIDATE_EMAIL))
+        {
+            throw new InvalidEmailException();
+        }
     }
 
     public function value(): string
     {
-        return $this->email;
+        return $this->value;
     }
 
     public function __toString(): string
     {
-        return $this->email;
+        return $this->value;
     }
 }

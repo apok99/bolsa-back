@@ -16,8 +16,13 @@ class DoctrineUserRepository extends ServiceEntityRepository implements UserRepo
         parent::__construct($registry, User::class);
     }
 
+    public function save(User $user): void
+    {
+        $this->_em->persist($user);
+    }
+
     public function byEmail(string $email): ?User
     {
-        return $this->findOneBy(['email.email' => $email]);
+        return $this->findOneBy(['email.value' => $email]);
     }
 }
