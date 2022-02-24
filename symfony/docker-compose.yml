@@ -15,6 +15,7 @@ services:
         container_name: capitale-php
         build:
             context: ./docker/php
+        user: $UID:$GID
         environment:
             DATABASE_URL: mysql://capitale:123123@capitale-db:3306/capitale?serverVersion=mariadb-10.7.1
         ports:
