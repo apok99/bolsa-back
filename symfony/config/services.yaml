@@ -3,8 +3,8 @@
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
-parameters:
-  fmp_api_key: '%env(FMP_API_KEY)%'
+#parameters:
+#  fmp_api_key: '%env(FMP_API_KEY)%'
 services:
     # default configuration for services in *this* file
     _defaults:
@@ -35,3 +35,9 @@ services:
         public: false
         tags:
             - { name: 'kernel.event_listener', event: 'kernel.exception', method: onKernelException, priority: 18 }
+
+    # SERVICES CONFIGURATION
+    App\MarketApi\Infrastructure\FMPMarketApi:
+        arguments:
+            - '%env(FMP_API_KEY)%'
+            - '%env(FMP_BASE_URL)%'

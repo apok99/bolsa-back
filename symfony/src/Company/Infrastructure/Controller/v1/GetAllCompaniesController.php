@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Company\Infrastructure\Controller\v1;
 
 use App\Api\Domain\ValueObject\ApiResponse;
+use App\MarketApi\Domain\MarketApi;
 use App\Security\Domain\Service\AuthSessionServiceInterface;
 use App\Shared\Infrastructure\Controller\v1\BaseController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -17,9 +18,12 @@ class GetAllCompaniesController extends BaseController
     #[Route('/companies', methods: ['GET'])]
     public function __invoke(
         AuthSessionServiceInterface $authSessionService,
-        MailerInterface $mailer
+        MailerInterface $mailer,
+        MarketApi $marketApi
     ): JsonResponse
     {
+        dd($marketApi->getCompany('AAPL'));
+
         $mail = new Email();
         $mail->to('test@ateasd.com')->from('from@from.com')->subject('Subject')->text('Contents');
         $mailer->send($mail);

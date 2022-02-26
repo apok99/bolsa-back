@@ -6,8 +6,9 @@ namespace App\MarketApi\Domain;
 
 interface MarketApi
 {
-    public function getSharePrice(string $identifier): int;
+    public function getCompanies(): array;
+    public function getCompanyPrice(string $identifier): int;
+    public function getCompany(string $identifier): array;
     public function getCryptoPrice(string $identifier): int;
-    public function getShares(): array;
     public function getCryptos(): array;
 }

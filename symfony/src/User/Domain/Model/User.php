@@ -15,6 +15,7 @@ class User
     private Email $email;
     private string $password;
     private array $roles;
+    private CarbonImmutable $acceptedAt;
     private CarbonImmutable $createdAt;
     private CarbonImmutable $updatedAt;
     private ?CarbonImmutable $deletedAt;
@@ -31,8 +32,7 @@ class User
         $this->email = $email;
         $this->password = $password;
         $this->roles = $roles;
-
-        $this->createdAt = $this->updatedAt = CarbonImmutable::now()->utc();
+        $this->createdAt = $this->updatedAt = $this->acceptedAt = CarbonImmutable::now()->utc();
     }
 
     public function id(): UuidInterface
@@ -60,6 +60,11 @@ class User
         return array_unique(['ROLE_USER', ...$this->roles]);
     }
 
+    public function acceptedAt(): CarbonImmutable
+    {
+        return $this->acceptedAt;
+    }
+
     public function createdAt(): CarbonImmutable
     {
         return $this->createdAt;
@@ -73,5 +78,10 @@ class User
     public function deletedAt(): ?CarbonImmutable
     {
         return $this->deletedAt;
+    }
+
+    public function delete(): void
+    {
+        $this->deletedAt = CarbonImmutable::now()->utc();
     }
 }
