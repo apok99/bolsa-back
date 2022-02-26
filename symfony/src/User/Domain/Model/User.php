@@ -60,11 +60,6 @@ class User
         return array_unique(['ROLE_USER', ...$this->roles]);
     }
 
-    public function setPassword(string $password): void
-    {
-        $this->password = $password;
-    }
-
     public function createdAt(): CarbonImmutable
     {
         return $this->createdAt;

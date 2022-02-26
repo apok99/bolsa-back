@@ -4,11 +4,10 @@ declare(strict_types=1);
 
 namespace App\Security\Application\Service;
 
-use App\Security\Domain\PasswordEncoderInterface;
+use App\Security\Domain\Service\PasswordEncoderInterface;
 
 class PasswordEncoder implements PasswordEncoderInterface
 {
-
     public function hash(string $plainPassword): string
     {
         return password_hash($plainPassword, PASSWORD_BCRYPT);

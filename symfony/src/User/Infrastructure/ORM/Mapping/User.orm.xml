@@ -2,6 +2,10 @@
     <entity name="App\User\Domain\Model\User"
             repository-class="App\User\Infrastructure\ORM\Repository\DoctrineUserRepository"
     >
+        <unique-constraints>
+            <unique-constraint name="email_uq" columns="email"/>
+        </unique-constraints>
+
         <id name="id" type="uuid_binary"/>
         <field name="username" unique="true"/>
         <embedded name="email" class="App\Shared\Domain\ValueObject\Email" use-column-prefix="false" />

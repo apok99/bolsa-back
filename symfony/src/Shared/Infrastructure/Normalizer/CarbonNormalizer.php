@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Shared\Infrastructure\Serializer;
+namespace App\Shared\Infrastructure\Normalizer;
 
 use Carbon\CarbonInterface;
 use Symfony\Component\Serializer\Normalizer\ContextAwareNormalizerInterface;
