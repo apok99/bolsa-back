@@ -35,6 +35,13 @@ services:
         depends_on:
             - php
             - database
+    mailhog:
+        container_name: capitale-mailhog
+        image: mailhog/mailhog:latest
+        restart: always
+        ports:
+            - "1025:1025"
+            - "8025:8025"
 networks:
     default:
         name: capitale-network
