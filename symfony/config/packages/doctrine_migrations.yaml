@@ -3,6 +3,6 @@ doctrine_migrations:
         # namespace is arbitrary but should be different from App\Migrations
         # as migrations classes should NOT be autoloaded
         #'DoctrineMigrations': '%kernel.project_dir%/migrations'
-        'App\User\Infrastructure\ORM\Migration': '%kernel.project_dir%/src/User/Infrastructure/ORM/Migration'
+        'App\Database\Infrastructure\ORM\Migration': '%kernel.project_dir%/src/Database/Infrastructure/ORM/Migration'
     enable_profiler: '%kernel.debug%'
     organize_migrations: BY_YEAR_AND_MONTH

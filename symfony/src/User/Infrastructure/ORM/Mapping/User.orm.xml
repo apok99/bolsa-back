@@ -1,6 +1,6 @@
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping">
     <entity name="App\User\Domain\Model\User"
-            repository-class="App\User\Infrastructure\ORM\Repository\DoctrineUserRepository"
+            repository-class="App\User\Infrastructure\Domain\Model\DoctrineUserRepository"
     >
         <unique-constraints>
             <unique-constraint name="email_uq" columns="email"/>
@@ -11,25 +11,9 @@
         <embedded name="email" class="App\Shared\Domain\ValueObject\Email" use-column-prefix="false" />
         <field name="password" nullable="true"/>
         <field name="roles" type="json"/>
-        <field name="acceptedAt" type="carbon" nullable="true">
-            <options>
-                <option name="charset">ascii</option>
-            </options>
-        </field>
-        <field name="createdAt" type="carbon">
-            <options>
-                <option name="charset">ascii</option>
-            </options>
-        </field>
-        <field name="updatedAt" type="carbon">
-            <options>
-                <option name="charset">ascii</option>
-            </options>
-        </field>
-        <field name="deletedAt" type="carbon" nullable="true">
-            <options>
-                <option name="charset">ascii</option>
-            </options>
-        </field>
+        <field name="acceptedAt" type="carbon_immutable" nullable="true" />
+        <field name="createdAt" type="carbon_immutable"/>
+        <field name="updatedAt" type="carbon_immutable"/>
+        <field name="deletedAt" type="carbon_immutable" nullable="true"/>
     </entity>
 </doctrine-mapping>

@@ -3,7 +3,7 @@ version: "3.8"
 services:
     database:
         container_name: capitale-db
-        image: mariadb:10.7.1
+        image: mariadb:10.8.2
         environment:
             MYSQL_ROOT_PASSWORD: 123123
             MYSQL_DATABASE: capitale
