@@ -41,3 +41,6 @@ services:
         arguments:
             - '%env(FMP_API_KEY)%'
             - '%env(FMP_BASE_URL)%'
+    App\Shared\Infrastructure\Validator\ValidatorService:
+        class: App\Shared\Infrastructure\Validator\SymfonyValidator
+        public: true

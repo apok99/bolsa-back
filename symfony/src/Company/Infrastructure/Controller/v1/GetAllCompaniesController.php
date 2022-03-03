@@ -9,6 +9,7 @@ use App\MarketApi\Domain\MarketApi;
 use App\Security\Domain\Service\AuthSessionServiceInterface;
 use App\Shared\Infrastructure\Controller\v1\BaseController;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpKernel\UriSigner;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Email;
 use Symfony\Component\Routing\Annotation\Route;
@@ -19,9 +20,11 @@ class GetAllCompaniesController extends BaseController
     public function __invoke(
         AuthSessionServiceInterface $authSessionService,
         MailerInterface $mailer,
-        MarketApi $marketApi
+        MarketApi $marketApi,
+        UriSigner $signer
     ): JsonResponse
     {
+        dd($signer->sign('https://capitale.fun/api/v1/security/new-password'));
         dd($marketApi->getCompany('AAPL'));
 
         $mail = new Email();

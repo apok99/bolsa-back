@@ -9,18 +9,25 @@ use Symfony\Component\PropertyAccess\PropertyAccess;
 use Symfony\Component\Validator\Constraints\Collection;
 use Symfony\Component\Validator\ConstraintViolation;
 use Symfony\Component\Validator\ConstraintViolationList;
-use Symfony\Component\Validator\Validation;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 class SymfonyValidator implements ValidatorService
 {
-    public static function validate(string $class, array $variables): void
+    private ValidatorInterface $validator;
+
+    public function __construct(ValidatorInterface $validator)
+    {
+        $this->validator = $validator;
+    }
+
+    public function validate(string $class, array $variables): void
     {
         /** @var Validator $class */
         $constraints = new Collection($class::constraints());
 
-        self::nullifyMissingValues($variables, $constraints);
+        $this->nullifyMissingValues($variables, $constraints);
 
-        $violations = Validation::createValidator()->validate($variables,$constraints);
+        $violations = $this->validator->validate($variables, $constraints);
 
         if (0 === $violations->count())
         {
@@ -28,11 +35,11 @@ class SymfonyValidator implements ValidatorService
         }
 
         throw new ValidationException(
-            self::parseErrors($violations)
+            $this->parseErrors($violations)
         );
     }
 
-    private static function parseErrors(ConstraintViolationList $violations): array
+    private function parseErrors(ConstraintViolationList $violations): array
     {
         $errors = [];
 
@@ -50,7 +57,7 @@ class SymfonyValidator implements ValidatorService
         return $errors;
     }
 
-    private static function nullifyMissingValues(array &$variables, Collection $constraints): void
+    private function nullifyMissingValues(array &$variables, Collection $constraints): void
     {
         $fields = array_keys($constraints->fields);
 

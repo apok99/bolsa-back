@@ -10,11 +10,15 @@ use App\Shared\Infrastructure\Validator\BaseValidator;
 use App\Shared\Infrastructure\Validator\Type\Basic\IsTrue;
 use App\Shared\Infrastructure\Validator\Type\Basic\Length;
 use App\Shared\Infrastructure\Validator\Type\Basic\NotBlank;
+use App\Shared\Infrastructure\Validator\Type\Basic\NotCompromisedPasswordConstraint;
 use App\Shared\Infrastructure\Validator\Type\Basic\NotNull;
 use App\Shared\Infrastructure\Validator\Type\Basic\RepeatedField;
 use App\Shared\Infrastructure\Validator\Type\Basic\StringType;
 use App\Shared\Infrastructure\Validator\Type\Basic\TypeConstraint;
+use App\Shared\Infrastructure\Validator\Type\Basic\UniqueEmailConstraint;
+use App\Shared\Infrastructure\Validator\Type\Basic\UniqueUsernameConstraint;
 use App\Shared\Infrastructure\Validator\Type\Basic\ValueObjectConstraint;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 class RegisterValidator extends BaseValidator
 {
@@ -35,18 +39,21 @@ class RegisterValidator extends BaseValidator
             self::USERNAME => [
                 NotNull::create(),
                 NotBlank::create(),
-                StringType::create()
+                StringType::create(),
+                UniqueUsernameConstraint::create()
             ],
             self::EMAIL => [
                 NotNull::create(),
                 NotBlank::create(),
-                ValueObjectConstraint::create(Email::class, ValidatorMessage::EMAIL_TYPE_CONSTRAINT)
+                ValueObjectConstraint::create(Email::class, ValidatorMessage::EMAIL_TYPE_CONSTRAINT),
+                UniqueEmailConstraint::create()
             ],
             self::PASSWORD => [
                 NotNull::create(),
                 NotBlank::create(),
                 StringType::create(),
-                Length::create(8)
+                Length::create(8),
+                NotCompromisedPasswordConstraint::create()
             ],
             self::CONFIRM_PASSWORD => [
                 RepeatedField::create(self::PASSWORD, ValidatorMessage::PASSWORDS_DO_NOT_MATCH)

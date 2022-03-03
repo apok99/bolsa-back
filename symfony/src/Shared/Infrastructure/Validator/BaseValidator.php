@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Shared\Infrastructure\Validator;
 
+use App\Kernel;
+
 /** @method validateBy() */
 abstract class BaseValidator implements Validator
 {
@@ -15,7 +17,7 @@ abstract class BaseValidator implements Validator
 
     protected static function validate(array $payload): self
     {
-        SymfonyValidator::validate(static::class, $payload);
+        Kernel::validator()->validate(static::class, $payload);
         return new static($payload);
     }
 

@@ -25,4 +25,9 @@ class DoctrineUserRepository extends ServiceEntityRepository implements UserRepo
     {
         return $this->findOneBy(['email.value' => $email]);
     }
+
+    public function byUsername(string $username): ?User
+    {
+        return $this->findOneBy(['username' => $username]);
+    }
 }

@@ -19,4 +19,7 @@ class ValidatorMessage
     public const MUST_AGREE_CONSTRAINT = 'validation.must_agree_constraint';
     public const TYPE_CONSTRAINT = 'validation.type_constraint';
     public const IS_TRUE_CONSTRAINT = 'validation.is_true_constraint';
+    public const UNIQUE_EMAIL_CONSTRAINT = 'validation.unique_email_constraint';
+    public const UNIQUE_USERNAME_CONSTRAINT = 'validation.unique_username_constraint';
+    public const NOT_COMPROMISED_PASSWORD_CONSTRAINT = 'validation.not_compromised_password_constraint';
 }

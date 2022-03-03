@@ -6,5 +6,5 @@ namespace App\Shared\Infrastructure\Validator;
 
 interface ValidatorService
 {
-    public static function validate(string $class, array $variables): void;
+    public function validate(string $class, array $variables): void;
 }
