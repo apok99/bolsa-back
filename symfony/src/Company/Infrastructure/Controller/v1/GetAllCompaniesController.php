@@ -7,6 +7,7 @@ namespace App\Company\Infrastructure\Controller\v1;
 use App\Api\Domain\ValueObject\ApiResponse;
 use App\MarketApi\Domain\MarketApi;
 use App\Security\Domain\Service\AuthSessionServiceInterface;
+use App\Security\Domain\Service\UrlSignerInterface;
 use App\Shared\Infrastructure\Controller\v1\BaseController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpKernel\UriSigner;
@@ -21,10 +22,15 @@ class GetAllCompaniesController extends BaseController
         AuthSessionServiceInterface $authSessionService,
         MailerInterface $mailer,
         MarketApi $marketApi,
-        UriSigner $signer
+        UrlSignerInterface $urlSigner
     ): JsonResponse
     {
-        dd($signer->sign('https://capitale.fun/api/v1/security/new-password'));
+        $signedUrl = $urlSigner->setUrl('https://capitale.fun/api/v1/security/new-password')
+            ->setUser($authSessionService->user())
+            ->addSeconds(100)->getSignedUrl();
+
+        dd($urlSigner->verify($signedUrl));
+
         dd($marketApi->getCompany('AAPL'));
 
         $mail = new Email();

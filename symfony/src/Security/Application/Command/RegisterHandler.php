@@ -35,6 +35,6 @@ class RegisterHandler implements CommandHandler
 
         $this->userRepository->save($user);
 
-        return $user->id();
+        return $user->uuid();
     }
 }

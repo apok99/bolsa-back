@@ -41,6 +41,9 @@ services:
         arguments:
             - '%env(FMP_API_KEY)%'
             - '%env(FMP_BASE_URL)%'
+    App\Security\Application\Service\UrlSigner:
+        arguments:
+            - '%env(APP_SECRET)%'
     App\Shared\Infrastructure\Validator\ValidatorService:
         class: App\Shared\Infrastructure\Validator\SymfonyValidator
         public: true
