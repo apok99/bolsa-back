@@ -2,7 +2,6 @@
 
 namespace App\Security\Application\Service;
 
-use App\Security\Domain\Exception\MissconfiguredUrlSignerException;
 use App\Security\Domain\Service\AuthSessionServiceInterface;
 use App\Security\Domain\Service\UrlSignerInterface;
 use App\User\Domain\Model\User;
@@ -15,7 +14,7 @@ class UrlSigner implements UrlSignerInterface
 
     private ?string $url = null;
     private ?DateInterval $duration = null;
-    private ?User $user = null;
+    private ?string $userIdentifier = null;
     private string $key;
     private AuthSessionServiceInterface $authSessionService;
 
@@ -98,9 +97,9 @@ class UrlSigner implements UrlSignerInterface
         return $this;
     }
 
-    public function setUser(User $user): UrlSignerInterface
+    public function setUserIdentifier(string $userIdentifier): UrlSignerInterface
     {
-        $this->user = $user;
+        $this->userIdentifier = $userIdentifier;
 
         return $this;
     }
@@ -108,7 +107,7 @@ class UrlSigner implements UrlSignerInterface
     public function getSignedUrl(): string
     {
         $options = [
-            'user' => $this->user?->uuid()->toString(),
+            'user' => $this->userIdentifier,
             'expiresAt' => $this->duration ? CarbonImmutable::now()->utc()->add($this->duration)->toDateTimeString() : null,
             'url' => $this->url
         ];
@@ -158,26 +157,22 @@ class UrlSigner implements UrlSignerInterface
 
         $options = json_decode($encoded, true, 512, JSON_THROW_ON_ERROR);
 
-        $userIsValid = $this->verifyUser($options['user']);
         $isNotExpired = $this->verifyExpiration($options['expiresAt']);
         $urlIsNotModified = $this->verifyUrl($explodedUrl[0], $options['url']);
 
-        return $userIsValid && $isNotExpired && $urlIsNotModified;
+        if ($isNotExpired && $urlIsNotModified)
+        {
+            $this->userIdentifier = $options['userIdentifier'];
+
+            return true;
+        }
+
+        return false;
     }
 
     private function buildUrl(string $encrypted, string $iv): string
     {
         return "$this->url?token=$encrypted&iv=$iv";
-    }
-
-    private function verifyUser(?string $userId): bool
-    {
-        if (null !== $userId)
-        {
-            return true;
-        }
-
-        return $this->authSessionService->user()->uuid()->toString() === $userId;
     }
 
     private function verifyExpiration(?string $expiration): bool

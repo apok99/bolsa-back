@@ -21,7 +21,7 @@ interface UrlSignerInterface
 
     public function addSeconds(int $seconds): self;
 
-    public function setUser(User $user): self;
+    public function setUserIdentifier(string $userIdentifier): self;
 
     public function getSignedUrl(): string;
 
