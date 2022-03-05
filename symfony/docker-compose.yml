@@ -11,6 +11,8 @@ services:
             MYSQL_PASSWORD: 123123
         ports:
             - "4306:3306"
+        volumes:
+            - ./docker/database:/var/lib/mysql
     php:
         container_name: capitale-php
         build:
