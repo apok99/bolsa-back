@@ -25,11 +25,14 @@ class GetAllCompaniesController extends BaseController
         UrlSignerInterface $urlSigner
     ): JsonResponse
     {
+        $email = $authSessionService->user()->email()->value();
         $signedUrl = $urlSigner->setUrl('https://capitale.fun/api/v1/security/new-password')
-            ->setUserIdentifier($authSessionService->user()->email()->value())
-            ->addSeconds(100)->getSignedUrl();
+            ->setUserIdentifier($email)
+            ->addSeconds(100)
+            ->setUses(1)
+            ->getSignedUrl();
 
-        dd($signedUrl);
+        return $this->jsonApiResponseFactory->empty();
 
         dd($marketApi->getCompany('AAPL'));
 

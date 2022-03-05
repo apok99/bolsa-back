@@ -23,6 +23,8 @@ interface UrlSignerInterface
 
     public function setUserIdentifier(string $userIdentifier): self;
 
+    public function setUses(int $uses): self;
+
     public function getSignedUrl(): string;
 
     public function verify(string $url): bool;

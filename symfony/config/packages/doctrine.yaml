@@ -32,6 +32,12 @@ doctrine:
                 type: xml
                 dir: '%kernel.project_dir%/src/Season/Infrastructure/ORM/Mapping'
                 prefix: 'App\Season\Domain\Model'
+            App\Security:
+                alias: Security
+                is_bundle: false
+                type: xml
+                dir: '%kernel.project_dir%/src/Security/Infrastructure/ORM/Mapping'
+                prefix: 'App\Security\Domain\Model'
             App\Shared\Domain\ValueObject:
                 alias: ValueObject
                 is_bundle: false

@@ -56,6 +56,9 @@ class RegisterValidator extends BaseValidator
                 NotCompromisedPasswordConstraint::create()
             ],
             self::CONFIRM_PASSWORD => [
+                NotNull::create(),
+                NotBlank::create(),
+                StringType::create(),
                 RepeatedField::create(self::PASSWORD, ValidatorMessage::PASSWORDS_DO_NOT_MATCH)
             ],
             self::TOS => [

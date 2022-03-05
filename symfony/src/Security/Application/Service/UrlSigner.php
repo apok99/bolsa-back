@@ -2,6 +2,9 @@
 
 namespace App\Security\Application\Service;
 
+use App\Security\Domain\Exception\MissconfiguredUrlSignerException;
+use App\Security\Domain\Model\SignedUrl;
+use App\Security\Domain\Model\SignedUrlRepository;
 use App\Security\Domain\Service\AuthSessionServiceInterface;
 use App\Security\Domain\Service\UrlSignerInterface;
 use App\User\Domain\Model\User;
@@ -10,21 +13,15 @@ use DateInterval;
 
 class UrlSigner implements UrlSignerInterface
 {
-    private const ALGO = 'aes-128-ctr';
-
     private ?string $url = null;
     private ?DateInterval $duration = null;
     private ?string $userIdentifier = null;
-    private string $key;
-    private AuthSessionServiceInterface $authSessionService;
+    private ?int $uses = null;
+    private SignedUrlRepository $signedUrlRepository;
 
-    public function __construct(
-        string $key,
-        AuthSessionServiceInterface $authSessionService
-    )
+    public function __construct(SignedUrlRepository $signedUrlRepository)
     {
-        $this->key = $key;
-        $this->authSessionService = $authSessionService;
+        $this->signedUrlRepository = $signedUrlRepository;
     }
 
     public function setUrl(string $url): UrlSignerInterface
@@ -104,89 +101,133 @@ class UrlSigner implements UrlSignerInterface
         return $this;
     }
 
+    public function setUses(int $uses): UrlSignerInterface
+    {
+        $this->uses = $uses;
+
+        return $this;
+    }
+
     public function getSignedUrl(): string
     {
-        $options = [
-            'user' => $this->userIdentifier,
-            'expiresAt' => $this->duration ? CarbonImmutable::now()->utc()->add($this->duration)->toDateTimeString() : null,
-            'url' => $this->url
-        ];
+        if (null === $this->url)
+        {
+            throw new MissconfiguredUrlSignerException();
+        }
 
-        $encoded = json_encode($options, JSON_THROW_ON_ERROR);
+        $token = bin2hex(random_bytes(32));
 
-        $iv = bin2hex(random_bytes(8));
+        if (null !== $this->duration)
+        {
+            $expiresAt = CarbonImmutable::now()->utc()->add($this->duration);
+        }
 
-        $encrypted =  openssl_encrypt(
-            $encoded,
-            self::ALGO,
-            $this->key,
-            0,
-            $iv
+        $signedUrl = new SignedUrl(
+            $token,
+            $this->url,
+            $this->userIdentifier,
+            $expiresAt ?? null,
+            $this->uses
         );
 
-        $base64 = base64_encode($encrypted);
+        $this->signedUrlRepository->save($signedUrl);
 
-        return $this->buildUrl($base64, $iv);
+        return $this->buildUrl($token);
     }
 
     public function verify(string $url): bool
     {
-        $explodedUrl = explode('?', $url);
+        $extracted = $this->extractUrlAndToken($url);
 
-        if (count($explodedUrl) !== 2)
+        if (null === $extracted)
         {
             return false;
         }
 
-        parse_str($explodedUrl[1], $params);
+        [$url, $token] = $extracted;
 
-        if (!isset($params['token'], $params['iv']))
+        $signedUrl = $this->signedUrlRepository->byToken($token);
+
+        if (null === $signedUrl)
         {
             return false;
         }
 
-        $token = base64_decode($params['token']);
+        $urlIsUnmodified = $this->verifyUrl($signedUrl->url(), $url);
+        $isNotExpired = $this->verifyExpiration($signedUrl->expiresAt());
+        $hasRemainingUses = $this->hasRemainingUses($signedUrl->uses());
 
-        $encoded = openssl_decrypt(
-            $token,
-            self::ALGO,
-            $this->key,
-            0,
-            $params['iv']
-        );
-
-        $options = json_decode($encoded, true, 512, JSON_THROW_ON_ERROR);
-
-        $isNotExpired = $this->verifyExpiration($options['expiresAt']);
-        $urlIsNotModified = $this->verifyUrl($explodedUrl[0], $options['url']);
-
-        if ($isNotExpired && $urlIsNotModified)
+        if (!$urlIsUnmodified || !$isNotExpired || !$hasRemainingUses)
         {
-            $this->userIdentifier = $options['userIdentifier'];
-
-            return true;
+            return false;
         }
 
-        return false;
+        $this->decreaseUses($signedUrl);
+
+        return true;
     }
 
-    private function buildUrl(string $encrypted, string $iv): string
+    private function buildUrl(string $token): string
     {
-        return "$this->url?token=$encrypted&iv=$iv";
+        // TODO: As of now SignedUrls aren't compatible with url params,
+        //   Consider if we might need them to
+        return $this->url . '?token=' . $token;
     }
 
-    private function verifyExpiration(?string $expiration): bool
+    private function verifyExpiration(?CarbonImmutable $expiration): bool
     {
         if (null === $expiration)
         {
             return true;
         }
 
-        return CarbonImmutable::now()->utc()->isBefore(CarbonImmutable::parse($expiration));
+        return CarbonImmutable::now()->utc()->isBefore($expiration);
+    }
+
+    private function hasRemainingUses(?int $uses): bool
+    {
+        if (null === $uses)
+        {
+            return true;
+        }
+
+        return $uses > 0;
     }
 
     private function verifyUrl(string $originalUrl, string $url): bool
     {
         return $originalUrl === $url;
+    }
+
+    private function extractUrlAndToken(string $url): ?array
+    {
+        $explodedUrl = explode('?', $url);
+
+        if (count($explodedUrl) !== 2)
+        {
+            return null;
+        }
+
+        parse_str($explodedUrl[1], $params);
+
+        return $params['token'] ? [$explodedUrl[0], $params['token']] : null;
+    }
+
+    private function decreaseUses(SignedUrl $signedUrl): void
+    {
+        if (null === $signedUrl->uses())
+        {
+            return;
+        }
+
+        $signedUrl->decreaseUses();
+
+        if ($signedUrl->uses() === 0)
+        {
+            $this->signedUrlRepository->delete($signedUrl);
+            return;
+        }
+
+        $this->signedUrlRepository->save($signedUrl);
     }
 }
