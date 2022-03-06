@@ -44,6 +44,15 @@ services:
         ports:
             - "1025:1025"
             - "8025:8025"
+    rabbitmq:
+        container_name: capitale-rabbitmq
+        image: rabbitmq:3.9.13-alpine
+        ports:
+            - "5672:5672"
+            - "15672:15672"
+        volumes:
+            - ~/.docker-conf/rabbitmq/data/:/var/lib/rabbitmq/
+            - ~/.docker-conf/rabbitmq/log/:/var/log/rabbitmq/
 networks:
     default:
         name: capitale-network
