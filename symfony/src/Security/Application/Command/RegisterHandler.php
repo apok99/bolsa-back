@@ -5,8 +5,7 @@ declare(strict_types=1);
 namespace App\Security\Application\Command;
 
 use App\Security\Domain\Service\PasswordEncoderInterface;
-use App\Shared\Application\Command\Command;
-use App\Shared\Application\Command\CommandHandler;
+use App\CQRS\Application\Command\CommandHandler;
 use App\User\Domain\Model\User;
 use App\User\Domain\Model\UserRepository;
 use Ramsey\Uuid\UuidInterface;

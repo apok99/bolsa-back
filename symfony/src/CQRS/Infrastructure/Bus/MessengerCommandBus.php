@@ -2,11 +2,10 @@
 
 declare(strict_types=1);
 
-namespace App\Shared\Infrastructure\Bus;
+namespace App\CQRS\Infrastructure\Bus;
 
-use App\Shared\Application\Bus\CommandBus;
-use App\Shared\Application\Command\AsyncCommand;
-use App\Shared\Application\Command\Command;
+use App\CQRS\Application\Bus\CommandBus;
+use App\CQRS\Application\Command\Command;
 use Symfony\Component\Messenger\MessageBusInterface;
 use Symfony\Component\Messenger\Stamp\HandledStamp;
 use Symfony\Component\Messenger\Stamp\StampInterface;
@@ -19,7 +18,7 @@ class MessengerCommandBus implements CommandBus
     {
     }
 
-    public function dispatch(Command|AsyncCommand $command): ?StampInterface
+    public function dispatch(Command $command): ?StampInterface
     {
         return $this->commandBus->dispatch($command)->last(HandledStamp::class);
     }

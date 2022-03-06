@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Shared\Application\Event;
+namespace App\CQRS\Application\Event;
 
 /** @method __invoke($event) */
 interface EventSubscriber

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Shared\Application\Bus;
+namespace App\CQRS\Application\Bus;
 
-use App\Shared\Application\Command\Command;
+use App\CQRS\Application\Command\Command;
 
 interface CommandBus
 {

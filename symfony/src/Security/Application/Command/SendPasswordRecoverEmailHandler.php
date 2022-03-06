@@ -6,7 +6,7 @@ namespace App\Security\Application\Command;
 
 use App\Security\Domain\Model\PasswordRecoveryToken;
 use App\Security\Domain\Model\PasswordRecoveryTokenRepository;
-use App\Shared\Application\Command\CommandHandler;
+use App\CQRS\Application\Command\CommandHandler;
 use App\User\Domain\Model\UserRepository;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Email;

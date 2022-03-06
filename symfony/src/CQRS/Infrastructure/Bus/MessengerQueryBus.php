@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace App\Shared\Infrastructure\Bus;
+namespace App\CQRS\Infrastructure\Bus;
 
-use App\Shared\Application\Bus\QueryBus;
-use App\Shared\Application\Query\Query;
+use App\CQRS\Application\Bus\QueryBus;
+use App\CQRS\Application\Query\Query;
 use Symfony\Component\Messenger\HandleTrait;
 
 class MessengerQueryBus implements QueryBus

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Security\Application\Command;
 
-use App\Shared\Application\Command\Command;
+use App\CQRS\Application\Command\Command;
 use Ramsey\Uuid\UuidInterface;
 
 class SendPasswordRecoverEmail implements Command

@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Shared\Domain\Event;
 
+use App\CQRS\Domain\Event\DomainEvent;
+
 class DomainEventPublisher
 {
     private array $events = [];

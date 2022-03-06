@@ -26,6 +26,6 @@ framework:
         routing:
             # Route your messages to the transports
             # 'App\Message\YourMessage': async
-            'App\Shared\Application\Command\Command': sync
-            'App\Shared\Application\Query\Query': sync
-            'App\Shared\Domain\Event\DomainEvent': async
+            'App\CQRS\Application\Command\Command': sync
+            'App\CQRS\Application\Query\Query': sync
+            'App\CQRS\Domain\Event\DomainEvent': async

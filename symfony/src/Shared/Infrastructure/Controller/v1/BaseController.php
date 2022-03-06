@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Shared\Infrastructure\Controller\v1;
 
-use App\Shared\Application\Bus\CommandBus;
-use App\Shared\Application\Bus\QueryBus;
+use App\CQRS\Application\Bus\CommandBus;
+use App\CQRS\Application\Bus\QueryBus;
 use App\Shared\Infrastructure\Controller\BaseRequest;
 use App\Api\Infrastructure\JsonApiResponseFactory;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;

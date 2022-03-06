@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Security\Domain\Event\PasswordRecoveryToken;
 
-use App\Shared\Domain\Event\DomainEvent;
+use App\CQRS\Domain\Event\DomainEvent;
 use Carbon\CarbonImmutable;
 use Ramsey\Uuid\UuidInterface;
 

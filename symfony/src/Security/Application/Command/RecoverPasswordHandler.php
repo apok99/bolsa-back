@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Security\Application\Command;
 
 use App\Security\Domain\Event\PasswordRecoveryToken\PasswordRecoveryTokenRequested;
-use App\Shared\Application\Command\CommandHandler;
+use App\CQRS\Application\Command\CommandHandler;
 use App\Shared\Domain\Event\DomainEventPublisher;
 use App\User\Domain\Model\UserRepository;
 

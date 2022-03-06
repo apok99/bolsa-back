@@ -24,7 +24,7 @@ class GetAllCompaniesController extends BaseController
     ): JsonResponse
     {
         $token = new PasswordRecoveryToken(
-            $authSessionService->user()
+            $authSessionService->user()->uuid()
         );
 
         dd($token);
