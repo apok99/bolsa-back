@@ -15,3 +15,5 @@ debug-routes:
 	docker exec -it capitale-php php bin/console debug:router
 server-dump:
 	docker exec -it capitale-php php bin/console server:dump
+docker-start:
+	UID=$(id -u) GID=$(id -g) docker compose up -d

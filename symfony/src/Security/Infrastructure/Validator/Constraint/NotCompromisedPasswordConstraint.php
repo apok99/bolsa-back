@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Shared\Infrastructure\Validator\Type\Basic;
+namespace App\Security\Infrastructure\Validator\Constraint;
 
 use App\Shared\Domain\Validator\ValidatorMessage;
 use Symfony\Component\Validator\Constraints\NotCompromisedPassword;

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Shared\Infrastructure\Validator\Type\Basic;
+namespace App\Shared\Infrastructure\Validator\Constraint;
 
 use App\Shared\Domain\Validator\ValidatorMessage;
 use Symfony\Component\Validator\Constraints\Length as SfLength;

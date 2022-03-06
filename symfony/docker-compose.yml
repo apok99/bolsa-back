@@ -17,7 +17,7 @@ services:
         container_name: capitale-php
         build:
             context: ./docker/php
-        user: $UID:$GID
+        user: "${UID:-1000}:${GID:-1000}"
         environment:
             DATABASE_URL: mysql://capitale:123123@capitale-db:3306/capitale?serverVersion=mariadb-10.7.1
         ports:
@@ -46,7 +46,7 @@ services:
             - "8025:8025"
     rabbitmq:
         container_name: capitale-rabbitmq
-        image: rabbitmq:3.9.13-alpine
+        image: rabbitmq:3.9.13-management-alpine
         ports:
             - "5672:5672"
             - "15672:15672"

@@ -1,26 +1,28 @@
 <?php
 
-namespace App\Shared\Infrastructure\Validator\Type\Basic;
+namespace App\User\Infrastructure\Validator\Constraint;
 
 use App\User\Domain\Model\UserRepository;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
 use Symfony\Component\Validator\Exception\UnexpectedTypeException;
 
-class UniqueEmailConstraintValidator extends ConstraintValidator
+class UniqueUsernameConstraintValidator extends ConstraintValidator
 {
     private UserRepository $userRepository;
 
-    public function __construct(UserRepository $userRepository)
+    public function __construct(
+        UserRepository $userRepository
+    )
     {
         $this->userRepository = $userRepository;
     }
 
     public function validate(mixed $value, Constraint $constraint)
     {
-        if (!$constraint instanceof UniqueEmailConstraint)
+        if (!$constraint instanceof UniqueUsernameConstraint)
         {
-            throw new UnexpectedTypeException($constraint, UniqueEmailConstraint::class);
+            throw new UnexpectedTypeException($constraint, UniqueUsernameConstraint::class);
         }
 
         if (null === $value || '' === $value)
@@ -28,7 +30,7 @@ class UniqueEmailConstraintValidator extends ConstraintValidator
             return;
         }
 
-        $user = $this->userRepository->byEmail($value);
+        $user = $this->userRepository->byUsername($value);
 
         if (null !== $user)
         {

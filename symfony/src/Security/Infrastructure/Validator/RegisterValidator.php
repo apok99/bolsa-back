@@ -7,18 +7,17 @@ namespace App\Security\Infrastructure\Validator;
 use App\Shared\Domain\Validator\ValidatorMessage;
 use App\Shared\Domain\ValueObject\Email;
 use App\Shared\Infrastructure\Validator\BaseValidator;
-use App\Shared\Infrastructure\Validator\Type\Basic\IsTrue;
-use App\Shared\Infrastructure\Validator\Type\Basic\Length;
-use App\Shared\Infrastructure\Validator\Type\Basic\NotBlank;
-use App\Shared\Infrastructure\Validator\Type\Basic\NotCompromisedPasswordConstraint;
-use App\Shared\Infrastructure\Validator\Type\Basic\NotNull;
-use App\Shared\Infrastructure\Validator\Type\Basic\RepeatedField;
-use App\Shared\Infrastructure\Validator\Type\Basic\StringType;
-use App\Shared\Infrastructure\Validator\Type\Basic\TypeConstraint;
-use App\Shared\Infrastructure\Validator\Type\Basic\UniqueEmailConstraint;
-use App\Shared\Infrastructure\Validator\Type\Basic\UniqueUsernameConstraint;
-use App\Shared\Infrastructure\Validator\Type\Basic\ValueObjectConstraint;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use App\Shared\Infrastructure\Validator\Constraint\IsTrue;
+use App\Shared\Infrastructure\Validator\Constraint\Length;
+use App\Shared\Infrastructure\Validator\Constraint\NotBlank;
+use App\Security\Infrastructure\Validator\Constraint\NotCompromisedPasswordConstraint;
+use App\Shared\Infrastructure\Validator\Constraint\NotNull;
+use App\Shared\Infrastructure\Validator\Constraint\RepeatedField;
+use App\Shared\Infrastructure\Validator\Constraint\StringType;
+use App\Shared\Infrastructure\Validator\Constraint\TypeConstraint;
+use App\User\Infrastructure\Validator\Constraint\UniqueEmailConstraint;
+use App\User\Infrastructure\Validator\Constraint\UniqueUsernameConstraint;
+use App\Shared\Infrastructure\Validator\Constraint\ValueObjectConstraint;
 
 class RegisterValidator extends BaseValidator
 {
