@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Security\Infrastructure\Validator;
 
+use App\Security\Infrastructure\Validator\Constraint\SecurePasswordConstraint;
 use App\Shared\Domain\Validator\ValidatorMessage;
 use App\Shared\Domain\ValueObject\Email;
 use App\Shared\Infrastructure\Validator\BaseValidator;
@@ -52,6 +53,7 @@ class RegisterValidator extends BaseValidator
                 NotBlank::create(),
                 StringType::create(),
                 Length::create(8),
+                SecurePasswordConstraint::create(),
                 NotCompromisedPasswordConstraint::create()
             ],
             self::CONFIRM_PASSWORD => [

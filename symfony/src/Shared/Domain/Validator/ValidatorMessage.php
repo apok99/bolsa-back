@@ -24,4 +24,5 @@ class ValidatorMessage
     public const NOT_COMPROMISED_PASSWORD_CONSTRAINT = 'validation.not_compromised_password_constraint';
     public const TOO_MANY_LOGIN_ATTEMPTS = 'validation.too_many_login_attempts';
     public const BAD_CREDENTIALS = 'validation.bad_credentials';
+    public const SECURE_PASSWORD_CONSTRAINT = 'validation.secure_password_constraint';
 }
