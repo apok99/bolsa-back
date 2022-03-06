@@ -15,9 +15,11 @@ framework:
         transports:
             # https://symfony.com/doc/current/messenger.html#transport-configuration
             # async: '%env(MESSENGER_TRANSPORT_DSN)%'
-            # failed: 'doctrine://default?queue_name=failed'
+            async_failed: 'doctrine://default?queue_name=async_failed'
             sync: 'sync://'
-            async: '%env(MESSENGER_TRANSPORT_DSN)%'
+            async:
+                dsn: '%env(MESSENGER_TRANSPORT_DSN)%'
+                failure_transport: async_failed
             # Uncomment this and comment the line above for testing
             # async: 'sync://'
 
