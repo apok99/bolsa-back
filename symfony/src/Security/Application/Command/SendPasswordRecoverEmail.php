@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace App\Security\Application\AsyncCommand;
+namespace App\Security\Application\Command;
 
-use App\Shared\Application\Command\AsyncCommand;
+use App\Shared\Application\Command\Command;
 use Ramsey\Uuid\UuidInterface;
 
-class SendPasswordRecoverEmail implements AsyncCommand
+class SendPasswordRecoverEmail implements Command
 {
     public function __construct(
         private UuidInterface $uuid

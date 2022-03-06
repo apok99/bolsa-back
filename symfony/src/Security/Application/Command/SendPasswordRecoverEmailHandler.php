@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Security\Application\AsyncCommand;
+namespace App\Security\Application\Command;
 
 use App\Security\Domain\Model\PasswordRecoveryToken;
 use App\Security\Domain\Model\PasswordRecoveryTokenRepository;
@@ -32,7 +32,7 @@ class SendPasswordRecoverEmailHandler implements CommandHandler
             throw new \Exception();
         }
 
-        $passwordRecoveryToken = new PasswordRecoveryToken($user);
+        $passwordRecoveryToken = new PasswordRecoveryToken($user->uuid());
 
         $this->passwordRecoveryTokenRepository->save($passwordRecoveryToken);
 

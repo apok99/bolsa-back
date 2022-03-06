@@ -15,11 +15,11 @@ class PasswordRecoveryToken
     private CarbonImmutable $expiresAt;
 
     public function __construct(
-        User $user
+        UuidInterface $userUuid
     )
     {
-        $this->token = sha1(uniqid($user->uuid()->toString(), true));
-        $this->userUuid = $user->uuid();
+        $this->token = sha1(uniqid($userUuid->toString(), true));
+        $this->userUuid = $userUuid;
         $this->expiresAt = CarbonImmutable::now()->utc()->addDay();
     }
 

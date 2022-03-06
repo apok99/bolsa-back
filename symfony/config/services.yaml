@@ -29,12 +29,18 @@ services:
         App\Shared\Application\Query\QueryHandler:
             tags:
                 - { name: messenger.message_handler, bus: query.bus }
-
+        App\Shared\Application\Event\EventSubscriber:
+            tags:
+                - { name: messenger.message_handler, bus: event.bus }
     # LISTENERS
     exception_kernel_request_listener:
         class: App\Shared\Infrastructure\Listener\Kernel\KernelExceptionListener
         tags:
             - { name: 'kernel.event_listener', event: 'kernel.exception', method: onKernelException, priority: 18 }
+    dispatch_events_on_kernel_terminate:
+        class: App\Shared\Infrastructure\Listener\Kernel\DispatchEventsOnKernelTerminate
+        tags:
+            - { name: 'kernel.event_listener', event: 'kernel.terminate', method: onKernelTerminate, priority: 18 }
     authentication_success_listener:
         class: App\Security\Infrastructure\Listener\Authentication\AuthenticationSuccessListener
         tags:

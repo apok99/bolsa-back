@@ -4,16 +4,15 @@ declare(strict_types=1);
 
 namespace App\Security\Application\Command;
 
-use App\Security\Application\AsyncCommand\SendPasswordRecoverEmail;
-use App\Shared\Application\Bus\CommandBus;
+use App\Security\Domain\Event\PasswordRecoveryToken\PasswordRecoveryTokenRequested;
 use App\Shared\Application\Command\CommandHandler;
+use App\Shared\Domain\Event\DomainEventPublisher;
 use App\User\Domain\Model\UserRepository;
 
 class RecoverPasswordHandler implements CommandHandler
 {
     public function __construct(
-        private UserRepository $userRepository,
-        private CommandBus $commandBus
+        private UserRepository $userRepository
     )
     {
     }
@@ -27,8 +26,8 @@ class RecoverPasswordHandler implements CommandHandler
             return;
         }
 
-        $this->commandBus->dispatch(
-            new SendPasswordRecoverEmail(
+        DomainEventPublisher::publish(
+            new PasswordRecoveryTokenRequested(
                 $user->uuid()
             )
         );
