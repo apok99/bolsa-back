@@ -22,4 +22,6 @@ class ValidatorMessage
     public const UNIQUE_EMAIL_CONSTRAINT = 'validation.unique_email_constraint';
     public const UNIQUE_USERNAME_CONSTRAINT = 'validation.unique_username_constraint';
     public const NOT_COMPROMISED_PASSWORD_CONSTRAINT = 'validation.not_compromised_password_constraint';
+    public const TOO_MANY_LOGIN_ATTEMPTS = 'validation.too_many_login_attempts';
+    public const BAD_CREDENTIALS = 'validation.bad_credentials';
 }

@@ -38,6 +38,19 @@ class JsonApiResponseFactory
         );
     }
 
+    public function fromErrorsArray(array $errors, array $headers = []): JsonResponse
+    {
+        $apiResponse = new ApiResponse(
+            ['errors' => $errors]
+        );
+
+        return new JsonResponse(
+            $this->serializer->normalize($apiResponse),
+            422,
+            $headers
+        );
+    }
+
     public function withCreatedId(UuidInterface $id): JsonResponse
     {
         return $this->empty([

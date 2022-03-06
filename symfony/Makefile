@@ -13,3 +13,5 @@ diff-db:
 	docker exec -it capitale-php php bin/console make:migration
 debug-routes:
 	docker exec -it capitale-php php bin/console debug:router
+server-dump:
+	docker exec -it capitale-php php bin/console server:dump

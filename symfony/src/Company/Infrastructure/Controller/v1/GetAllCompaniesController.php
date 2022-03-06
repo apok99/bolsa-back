@@ -6,11 +6,10 @@ namespace App\Company\Infrastructure\Controller\v1;
 
 use App\Api\Domain\ValueObject\ApiResponse;
 use App\MarketApi\Domain\MarketApi;
+use App\Security\Domain\Model\PasswordRecoveryToken;
 use App\Security\Domain\Service\AuthSessionServiceInterface;
-use App\Security\Domain\Service\UrlSignerInterface;
 use App\Shared\Infrastructure\Controller\v1\BaseController;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpKernel\UriSigner;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Email;
 use Symfony\Component\Routing\Annotation\Route;
@@ -21,16 +20,14 @@ class GetAllCompaniesController extends BaseController
     public function __invoke(
         AuthSessionServiceInterface $authSessionService,
         MailerInterface $mailer,
-        MarketApi $marketApi,
-        UrlSignerInterface $urlSigner
+        MarketApi $marketApi
     ): JsonResponse
     {
-        $email = $authSessionService->user()->email()->value();
-        $signedUrl = $urlSigner->setUrl('https://capitale.fun/api/v1/security/new-password')
-            ->setUserIdentifier($email)
-            ->addSeconds(100)
-            ->setUses(1)
-            ->getSignedUrl();
+        $token = new PasswordRecoveryToken(
+            $authSessionService->user()
+        );
+
+        dd($token);
 
         return $this->jsonApiResponseFactory->empty();
 

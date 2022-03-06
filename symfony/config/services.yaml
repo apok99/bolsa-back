@@ -29,16 +29,20 @@ services:
         App\Shared\Application\Query\QueryHandler:
             tags:
                 - { name: messenger.message_handler, bus: query.bus }
+
     # LISTENERS
     exception_kernel_request_listener:
         class: App\Shared\Infrastructure\Listener\Kernel\KernelExceptionListener
-        public: false
         tags:
             - { name: 'kernel.event_listener', event: 'kernel.exception', method: onKernelException, priority: 18 }
     authentication_success_listener:
         class: App\Security\Infrastructure\Listener\Authentication\AuthenticationSuccessListener
         tags:
             - { name: 'kernel.event_listener', event: lexik_jwt_authentication.on_authentication_success, priority: -1, method: onAuthenticationSuccessResponse }
+    authentication_failure_listener:
+        class: App\Security\Infrastructure\Listener\Authentication\AuthenticationFailureListener
+        tags:
+            - { name: 'kernel.event_listener', event: lexik_jwt_authentication.on_authentication_failure, priority: -1, method: onAuthenticationFailureResponse }
     # SERVICES CONFIGURATION
     App\MarketApi\Infrastructure\FMPMarketApi:
         arguments:

@@ -6,7 +6,7 @@ namespace App\Shared\Infrastructure\Validator;
 
 use App\Kernel;
 
-/** @method validateBy() */
+/** @method static validateBy() */
 abstract class BaseValidator implements Validator
 {
     public function __construct(private array $payload)

@@ -25,7 +25,7 @@ class RegisterHandler implements CommandHandler
         $this->passwordEncoder = $passwordEncoder;
     }
 
-    public function __invoke(Register|Command $command): UuidInterface
+    public function __invoke(Register $command): UuidInterface
     {
         $user = new User(
             $command->username(),

@@ -8,6 +8,7 @@ use App\User\Domain\Model\User;
 use App\User\Domain\Model\UserRepository;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Ramsey\Uuid\UuidInterface;
 
 class DoctrineUserRepository extends ServiceEntityRepository implements UserRepository
 {
@@ -19,6 +20,11 @@ class DoctrineUserRepository extends ServiceEntityRepository implements UserRepo
     public function save(User $user): void
     {
         $this->_em->persist($user);
+    }
+
+    public function byUuid(UuidInterface $uuid): ?User
+    {
+        return $this->find($uuid);
     }
 
     public function byEmail(string $email): ?User

@@ -15,9 +15,12 @@ framework:
             # failed: 'doctrine://default?queue_name=failed'
             sync: 'sync://'
             async: '%env(MESSENGER_TRANSPORT_DSN)%'
+            # Uncomment this and comment the line above for testing
+            # async: 'sync://'
 
         routing:
             # Route your messages to the transports
             # 'App\Message\YourMessage': async
             'App\Shared\Application\Command\Command': sync
             'App\Shared\Application\Query\Query': sync
+            'App\Shared\Application\Command\AsyncCommand': async
