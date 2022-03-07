@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\CQRS\Application\Query;
 
+/** @method __invoke(Query $query) */
 interface QueryHandler
 {
-    public function __invoke(Query $command);
 }

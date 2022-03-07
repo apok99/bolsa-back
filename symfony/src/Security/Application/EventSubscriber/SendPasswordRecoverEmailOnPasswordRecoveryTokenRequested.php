@@ -26,5 +26,7 @@ class SendPasswordRecoverEmailOnPasswordRecoveryTokenRequested implements EventS
                 $event->userUuid()
             )
         );
+
+        // TODO: Send Email
     }
 }

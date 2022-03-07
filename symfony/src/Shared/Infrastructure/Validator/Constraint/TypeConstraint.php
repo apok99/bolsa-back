@@ -9,6 +9,9 @@ use Symfony\Component\Validator\Constraints\Type;
 
 class TypeConstraint
 {
+    public const BOOL_TYPE = 'bool';
+    public const ARRAY_TYPE = 'array';
+
     public static function create(
         string $type,
         string $message = null,

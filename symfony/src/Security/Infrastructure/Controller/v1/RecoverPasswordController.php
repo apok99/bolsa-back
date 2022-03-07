@@ -17,7 +17,7 @@ class RecoverPasswordController extends BaseController
     {
         $validated = RecoverPasswordValidator::validateBy($this->request->content());
 
-        $this->commandBus->dispatch(
+        $this->commandBus->handle(
             new RecoverPassword(
                 $validated->email()
             )

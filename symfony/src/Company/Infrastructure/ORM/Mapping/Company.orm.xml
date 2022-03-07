@@ -1,0 +1,10 @@
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping">
+    <entity name="App\Company\Domain\Model\Company">
+        <id name="uuid" type="uuid_binary"/>
+        <field name="symbol" unique="true"/>
+        <field name="active" type="boolean"/>
+        <field name="createdAt" type="carbon_immutable"/>
+        <field name="updatedAt" type="carbon_immutable"/>
+        <field name="deletedAt" type="carbon_immutable" nullable="true"/>
+    </entity>
+</doctrine-mapping>

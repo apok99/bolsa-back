@@ -8,5 +8,5 @@ use App\CQRS\Application\Command\Command;
 
 interface CommandBus
 {
-    public function dispatch(Command $command): mixed;
+    public function handle(Command $command): mixed;
 }

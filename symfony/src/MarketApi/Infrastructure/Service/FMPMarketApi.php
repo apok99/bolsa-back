@@ -2,9 +2,10 @@
 
 declare(strict_types=1);
 
-namespace App\MarketApi\Infrastructure;
+namespace App\MarketApi\Infrastructure\Service;
 
-use App\MarketApi\Domain\MarketApi;
+use App\Company\Domain\Model\Company;
+use App\MarketApi\Domain\Service\MarketApi;
 use Doctrine\DBAL\Exception;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
@@ -23,17 +24,24 @@ class FMPMarketApi implements MarketApi
         ]);
     }
 
-    public function getCompanies(): array
+    public function getCompanies(array $companies): array
     {
-        // TODO: Implement getShares() method.
-        return [];
+        $companySymbols = array_map(static function(Company $company) {
+            return $company->symbol();
+        }, $companies);
+
+        $companiesString = implode(',', $companySymbols);
+
+        $url = FMPMarketApiUrls::GET_COMPANIES_URL . $companiesString;
+
+        return $this->makeRequest($url);
     }
 
-    public function getCompanyPrice(string $identifier): int
+    public function getCompanyPrice(string $identifier): array
     {
         // TODO: Implement getSharePrice() method.
         dd($this->makeRequest('api/v3/quote-short/' . $identifier));
-        return 0;
+        return [];
     }
 
     public function getCompany(string $identifier): array
@@ -44,13 +52,13 @@ class FMPMarketApi implements MarketApi
     }
 
 
-    public function getCryptoPrice(string $identifier): int
+    public function getCryptoPrice(string $identifier): array
     {
         // TODO: Implement getCryptoPrice() method.
-        return 0;
+        return [];
     }
 
-    public function getCryptos(): array
+    public function getCryptos(array $cryptos): array
     {
         // TODO: Implement getCryptos() method.
         return [];
@@ -68,6 +76,6 @@ class FMPMarketApi implements MarketApi
             throw new Exception();
         }
 
-        return json_decode($response->getContent(), false, 512, JSON_THROW_ON_ERROR);
+        return json_decode($response->getContent(), true, 512, JSON_THROW_ON_ERROR);
     }
 }

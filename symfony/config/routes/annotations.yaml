@@ -6,6 +6,10 @@ security:
     resource: ../../src/Security/Infrastructure/Controller/v1/
     type: annotation
     prefix: /api/v1
+market_api:
+    resource: ../../src/MarketApi/Infrastructure/Controller/v1/
+    type: annotation
+    prefix: /api/v1
 api_login:
     path: /api/v1/login
 kernel:

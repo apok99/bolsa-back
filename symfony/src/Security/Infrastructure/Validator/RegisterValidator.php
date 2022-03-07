@@ -65,7 +65,7 @@ class RegisterValidator extends BaseValidator
             self::TOS => [
                 NotNull::create(),
                 NotBlank::create(),
-                TypeConstraint::create('bool'),
+                TypeConstraint::create(TypeConstraint::BOOL_TYPE),
                 IsTrue::create()
             ]
         ];

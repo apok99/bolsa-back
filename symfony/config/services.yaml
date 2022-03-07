@@ -50,7 +50,7 @@ services:
         tags:
             - { name: 'kernel.event_listener', event: lexik_jwt_authentication.on_authentication_failure, priority: -1, method: onAuthenticationFailureResponse }
     # SERVICES CONFIGURATION
-    App\MarketApi\Infrastructure\FMPMarketApi:
+    App\MarketApi\Infrastructure\Service\FMPMarketApi:
         arguments:
             - '%env(FMP_API_KEY)%'
             - '%env(FMP_BASE_URL)%'

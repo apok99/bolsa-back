@@ -18,7 +18,7 @@ class MessengerCommandBus implements CommandBus
     {
     }
 
-    public function dispatch(Command $command): ?StampInterface
+    public function handle(Command $command): ?StampInterface
     {
         return $this->commandBus->dispatch($command)->last(HandledStamp::class);
     }

@@ -17,7 +17,7 @@ class RegistrationController extends BaseController
     {
         $validated = RegisterValidator::validateBy($this->request->content());
 
-        $id = $this->commandBus->dispatch(
+        $id = $this->commandBus->handle(
             new Register(
                 $validated->username(),
                 $validated->email(),
