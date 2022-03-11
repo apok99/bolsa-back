@@ -35,4 +35,13 @@ class DoctrineCompanyRepository extends ServiceEntityRepository implements Compa
     {
         return $this->findOneBy(['symbol' => $symbol]);
     }
+
+    public function bySymbols(array $symbols): array
+    {
+        return $this->createQueryBuilder('company')
+            ->andWhere('company.symbol IN (:symbols)')
+            ->setParameter('symbols', $symbols)
+            ->getQuery()
+            ->getResult();
+    }
 }

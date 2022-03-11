@@ -33,6 +33,7 @@ services:
             tags:
                 - { name: messenger.message_handler, bus: event.bus }
     # LISTENERS
+    # TODO: Refactor to subscribers?
     exception_kernel_request_listener:
         class: App\Shared\Infrastructure\Listener\Kernel\KernelExceptionListener
         tags:

@@ -12,4 +12,5 @@ interface CompanyRepository
     public function getAllActive(): array;
     public function byUuid(UuidInterface $uuid): ?Company;
     public function bySymbol(string $symbol): ?Company;
+    public function bySymbols(array $symbols): array;
 }

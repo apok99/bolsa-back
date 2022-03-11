@@ -13,7 +13,6 @@ class GetAllCompaniesController extends BaseController
     #[Route('/companies', methods: ['GET'])]
     public function __invoke(): JsonResponse
     {
-
         return $this->jsonApiResponseFactory->empty();
     }
 }

@@ -27,4 +27,9 @@ class BaseRequest
 
         return is_array($content) ? $content : json_decode($content, true, 512, JSON_THROW_ON_ERROR);
     }
+
+    public function params(): array
+    {
+        return $this->request->query->all();
+    }
 }
