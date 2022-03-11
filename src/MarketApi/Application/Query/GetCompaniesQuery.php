@@ -9,13 +9,13 @@ use App\CQRS\Application\Query\Query;
 class GetCompaniesQuery implements Query
 {
     public function __construct(
-        private array $companies
+        private array $symbols
     )
     {
     }
 
-    public function companies(): array
+    public function symbols(): array
     {
-        return $this->companies;
+        return $this->symbols;
     }
 }

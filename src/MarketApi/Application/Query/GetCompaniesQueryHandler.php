@@ -21,7 +21,7 @@ class GetCompaniesQueryHandler implements QueryHandler
 
     public function __invoke(GetCompaniesQuery $query): ApiResponse
     {
-        $companies = $this->companyRepository->bySymbols($query->companies());
+        $companies = $this->companyRepository->bySymbols($query->symbols());
 
         $response = $this->marketApi->getCompanies($companies);
 

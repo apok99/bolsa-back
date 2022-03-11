@@ -18,7 +18,7 @@ class GetCompaniesController extends BaseController
 
         $apiResponse = $this->queryBus->handle(
             new GetCompaniesQuery(
-                $validated->companies()
+                $validated->symbols()
             )
         );
 

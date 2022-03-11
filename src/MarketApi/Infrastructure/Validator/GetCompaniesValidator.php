@@ -11,7 +11,7 @@ use App\Shared\Infrastructure\Validator\Constraint\TypeConstraint;
 
 class GetCompaniesValidator extends BaseValidator
 {
-    private const COMPANIES = 'companies';
+    private const SYMBOLS = 'symbols';
 
     public static function validateBy(array $payload): self
     {
@@ -21,7 +21,7 @@ class GetCompaniesValidator extends BaseValidator
     public static function constraints(): array
     {
         return [
-            self::COMPANIES => [
+            self::SYMBOLS => [
                 NotNull::create(),
                 NotBlank::create(),
                 TypeConstraint::create(TypeConstraint::ARRAY_TYPE)
@@ -29,8 +29,8 @@ class GetCompaniesValidator extends BaseValidator
         ];
     }
 
-    public function companies(): array
+    public function symbols(): array
     {
-        return $this->payload(self::COMPANIES);
+        return $this->payload(self::SYMBOLS);
     }
 }
