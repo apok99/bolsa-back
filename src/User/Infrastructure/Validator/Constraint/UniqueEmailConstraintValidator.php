@@ -16,7 +16,7 @@ class UniqueEmailConstraintValidator extends ConstraintValidator
         $this->userRepository = $userRepository;
     }
 
-    public function validate(mixed $value, Constraint $constraint)
+    public function validate(mixed $value, Constraint $constraint): void
     {
         if (!$constraint instanceof UniqueEmailConstraint)
         {
