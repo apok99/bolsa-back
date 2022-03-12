@@ -1,7 +1,5 @@
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping">
-    <entity name="App\Season\Domain\Model\Season"
-            repository-class="App\Season\Infrastructure\Domain\Model\DoctrineSeasonRepository"
-    >
+    <entity name="App\Season\Domain\Model\Season">
         <id name="uuid" type="uuid_binary"/>
         <field name="startDate" type="carbon_immutable"/>
         <field name="endDate" type="carbon_immutable"/>

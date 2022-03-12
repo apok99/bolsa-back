@@ -12,6 +12,10 @@ class EntityReference implements ValueObject
     private UuidInterface $uuid;
     private string $type;
 
+    public const COMPANY = 'company';
+    public const CRYPTO = 'crypto';
+    public const FOREX = 'forex';
+
     public function __construct(
         UuidInterface $uuid,
         string $type
@@ -43,5 +47,20 @@ class EntityReference implements ValueObject
     public function type(): string
     {
         return $this->type;
+    }
+
+    public function isCompany(): bool
+    {
+        return self::COMPANY === $this->type;
+    }
+
+    public function isCrypto(): bool
+    {
+        return self::CRYPTO === $this->type;
+    }
+
+    public function isForex(): bool
+    {
+        return self::FOREX === $this->type;
     }
 }
