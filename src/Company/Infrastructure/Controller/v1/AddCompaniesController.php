@@ -18,7 +18,7 @@ class AddCompaniesController extends BaseController
         $validated = AddCompaniesValidator::validateBy($this->request->content());
 
         $this->commandBus->handle(
-            new AddCompanies($validated->symbols())
+            new AddCompanies($validated->companies())
         );
 
         return $this->jsonApiResponseFactory->empty();

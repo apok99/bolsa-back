@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\MarketApi\Application\Query;
 
 use App\Api\Domain\ValueObject\ApiResponse;
-use App\Company\Domain\Model\Company;
 use App\Company\Domain\Model\CompanyRepository;
 use App\CQRS\Application\Query\QueryHandler;
 use App\MarketApi\Domain\Service\MarketApi;

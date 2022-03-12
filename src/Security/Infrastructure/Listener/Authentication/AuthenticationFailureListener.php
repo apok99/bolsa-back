@@ -31,6 +31,8 @@ class AuthenticationFailureListener
                     ]
                 )
             );
+
+            return;
         }
 
         if ($exception instanceof BadCredentialsException)

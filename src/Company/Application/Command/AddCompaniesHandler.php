@@ -18,11 +18,12 @@ class AddCompaniesHandler implements CommandHandler
 
     public function __invoke(AddCompanies $command)
     {
-        foreach ($command->symbols() as $symbol)
+        foreach ($command->companies() as $company)
         {
-            // TODO: Add Collection constraint to AddCompaniesValidator to get
-            //  [ symbol, active ] for each company and pass it to the constructor
-            $company = new Company($symbol);
+            $company = new Company(
+                $company['symbol'],
+                $company['active'] ?? null
+            );
 
             $this->companyRepository->save($company);
         }

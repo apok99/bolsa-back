@@ -9,13 +9,13 @@ use App\CQRS\Application\Command\Command;
 class AddCompanies implements Command
 {
     public function __construct(
-        private array $symbols
+        private array $companies
     )
     {
     }
 
-    public function symbols(): array
+    public function companies(): array
     {
-        return $this->symbols;
+        return $this->companies;
     }
 }

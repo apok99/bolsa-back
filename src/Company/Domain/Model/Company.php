@@ -19,12 +19,12 @@ class Company
 
     public function __construct(
         string $symbol,
-        bool $active = true
+        ?bool $active = null
     )
     {
         $this->uuid = Uuid::uuid4();
         $this->symbol = $symbol;
-        $this->active = $active;
+        $this->active = $active ?? false;
         $this->createdAt = $this->updatedAt = CarbonImmutable::now()->utc();
     }
 
