@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Company\Domain\Model;
 
+use App\Market\Domain\ValueObject\Market;
 use Carbon\CarbonImmutable;
 use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidInterface;
@@ -12,6 +13,7 @@ class Company
 {
     private UuidInterface $id;
     private string $symbol;
+    private Market $market;
     private bool $active;
     private CarbonImmutable $createdAt;
     private CarbonImmutable $updatedAt;
@@ -19,11 +21,13 @@ class Company
 
     public function __construct(
         string $symbol,
+        Market $market,
         ?bool $active = null
     )
     {
         $this->id = Uuid::uuid4();
         $this->symbol = $symbol;
+        $this->market = $market;
         $this->active = $active ?? false;
         $this->createdAt = $this->updatedAt = CarbonImmutable::now()->utc();
     }
@@ -36,6 +40,11 @@ class Company
     public function symbol(): string
     {
         return $this->symbol;
+    }
+
+    public function market(): Market
+    {
+        return $this->market;
     }
 
     public function active(): bool

@@ -2,6 +2,7 @@
     <entity name="App\Company\Domain\Model\Company">
         <id name="id" type="uuid_binary"/>
         <field name="symbol" unique="true"/>
+        <embedded name="market" class="App\Market\Domain\ValueObject\Market" use-column-prefix="false"/>
         <field name="active" type="boolean"/>
         <field name="createdAt" type="carbon_immutable"/>
         <field name="updatedAt" type="carbon_immutable"/>

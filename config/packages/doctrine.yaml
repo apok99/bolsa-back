@@ -39,11 +39,17 @@ doctrine:
                 dir: '%kernel.project_dir%/src/Security/Infrastructure/ORM/Mapping'
                 prefix: 'App\Security\Domain\Model'
             App\Shared\Domain\ValueObject:
-                alias: ValueObject
+                alias: SharedValueObject
                 is_bundle: false
                 type: xml
                 dir: '%kernel.project_dir%/src/Shared/Infrastructure/ORM/Mapping'
                 prefix: 'App\Shared\Domain\ValueObject'
+            App\Market\Domain\ValueObject:
+                alias: MarketValueObject
+                is_bundle: false
+                type: xml
+                dir: '%kernel.project_dir%/src/Market/Infrastructure/ORM/Mapping'
+                prefix: 'App\Market\Domain\ValueObject'
             App\Transaction:
                 alias: Transaction
                 is_bundle: false
