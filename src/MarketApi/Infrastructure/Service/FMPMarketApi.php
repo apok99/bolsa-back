@@ -6,7 +6,7 @@ namespace App\MarketApi\Infrastructure\Service;
 
 use App\Company\Domain\Model\Company;
 use App\MarketApi\Domain\Service\MarketApi;
-use Doctrine\DBAL\Exception;
+use Exception;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
@@ -71,11 +71,22 @@ class FMPMarketApi implements MarketApi
             $url
         );
 
+        // TODO: Throw a custom exception and catch it in a KernelException subscriber
+        //  This error could mean the API is down
         if ($response->getStatusCode() !== Response::HTTP_OK)
         {
             throw new Exception();
         }
 
-        return json_decode($response->getContent(), true, 512, JSON_THROW_ON_ERROR);
+        $decodedResponse = json_decode($response->getContent(), true, 512, JSON_THROW_ON_ERROR);
+
+        // TODO: Throw a custom exception and catch it in a KernelException subscriber
+        //  This error probably means the API key is invalid
+        if (isset($decodedResponse['Error Message']))
+        {
+            throw new Exception();
+        }
+
+        return $decodedResponse;
     }
 }
