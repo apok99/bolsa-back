@@ -1,0 +1,17 @@
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping">
+    <entity name="App\Transaction\Domain\Model\Transaction">
+        <indexes>
+            <index name="user_season_idx" columns="user_id,season_id"/>
+            <index name="asset_idx" columns="asset_id,asset_type"/>
+        </indexes>
+
+        <id name="id" type="uuid_binary"/>
+        <embedded name="asset" class="App\Shared\Domain\ValueObject\EntityReference"
+                  column-prefix="asset_"/>
+        <field name="price" type="decimal" precision="18" scale="8"/>
+        <field name="amount" type="decimal" precision="18" scale="0"/>
+        <many-to-one field="user" target-entity="App\User\Domain\Model\User"/>
+        <many-to-one field="season" target-entity="App\Season\Domain\Model\Season"/>
+        <field name="occurredAt" type="carbon_immutable"/>
+    </entity>
+</doctrine-mapping>

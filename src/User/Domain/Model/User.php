@@ -10,7 +10,7 @@ use Ramsey\Uuid\UuidInterface;
 
 class User
 {
-    private UuidInterface $uuid;
+    private UuidInterface $id;
     private string $username;
     private Email $email;
     private string $password;
@@ -27,7 +27,7 @@ class User
         array $roles = []
     )
     {
-        $this->uuid = Uuid::uuid4();
+        $this->id = Uuid::uuid4();
         $this->username = $username;
         $this->email = $email;
         $this->password = $password;
@@ -35,9 +35,9 @@ class User
         $this->createdAt = $this->updatedAt = $this->acceptedAt = CarbonImmutable::now()->utc();
     }
 
-    public function uuid(): UuidInterface
+    public function id(): UuidInterface
     {
-        return $this->uuid;
+        return $this->id;
     }
 
     public function username(): string

@@ -22,9 +22,9 @@ class DoctrineUserRepository extends ServiceEntityRepository implements UserRepo
         $this->_em->persist($user);
     }
 
-    public function byUuid(UuidInterface $uuid): ?User
+    public function byId(UuidInterface $id): ?User
     {
-        return $this->find($uuid);
+        return $this->find($id);
     }
 
     public function byEmail(string $email): ?User

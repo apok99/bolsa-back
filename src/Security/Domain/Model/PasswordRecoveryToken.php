@@ -11,15 +11,15 @@ use Ramsey\Uuid\UuidInterface;
 class PasswordRecoveryToken
 {
     private string $token;
-    private UuidInterface $userUuid;
+    private UuidInterface $userId;
     private CarbonImmutable $expiresAt;
 
     public function __construct(
-        UuidInterface $userUuid
+        UuidInterface $userId
     )
     {
-        $this->token = sha1(uniqid($userUuid->toString(), true));
-        $this->userUuid = $userUuid;
+        $this->token = sha1(uniqid($userId->toString(), true));
+        $this->userId = $userId;
         $this->expiresAt = CarbonImmutable::now()->utc()->addDay();
     }
 
@@ -28,9 +28,9 @@ class PasswordRecoveryToken
         return $this->token;
     }
 
-    public function userUuid(): UuidInterface
+    public function userId(): UuidInterface
     {
-        return $this->userUuid;
+        return $this->userId;
     }
 
     public function expiresAt(): CarbonImmutable

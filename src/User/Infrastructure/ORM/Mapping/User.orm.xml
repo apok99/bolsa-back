@@ -4,7 +4,7 @@
             <unique-constraint name="email_uq" columns="email"/>
         </unique-constraints>
 
-        <id name="uuid" type="uuid_binary"/>
+        <id name="id" type="uuid_binary"/>
         <field name="username" unique="true"/>
         <embedded name="email" class="App\Shared\Domain\ValueObject\Email" use-column-prefix="false" />
         <field name="password" nullable="true"/>

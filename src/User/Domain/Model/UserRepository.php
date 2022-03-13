@@ -8,7 +8,7 @@ interface UserRepository
 {
     public function save(User $user): void;
 
-    public function byUuid(UuidInterface $uuid): ?User;
+    public function byId(UuidInterface $id): ?User;
 
     public function byEmail(string $email): ?User;
 

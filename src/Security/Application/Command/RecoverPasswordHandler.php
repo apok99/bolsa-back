@@ -28,7 +28,7 @@ class RecoverPasswordHandler implements CommandHandler
 
         DomainEventPublisher::publish(
             new PasswordRecoveryTokenRequested(
-                $user->uuid()
+                $user->id()
             )
         );
     }

@@ -23,16 +23,17 @@ class SendPasswordRecoverEmailHandler implements CommandHandler
 
     public function __invoke(SendPasswordRecoverEmail $command)
     {
-        $user = $this->userRepository->byUuid($command->uuid());
+        $user = $this->userRepository->byId($command->uuid());
 
         // TODO: Can't throw UnrecoverableMessageException in Application, figure out what to do
+        //      - Solution: Implement a Messenger middleware that listens to domain exceptions and maps them to symfony exceptions
         // TODO: Create UserNotFound exception
         if (null === $user)
         {
             throw new \Exception();
         }
 
-        $passwordRecoveryToken = new PasswordRecoveryToken($user->uuid());
+        $passwordRecoveryToken = new PasswordRecoveryToken($user->id());
 
         $this->passwordRecoveryTokenRepository->save($passwordRecoveryToken);
 

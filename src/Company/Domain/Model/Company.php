@@ -10,7 +10,7 @@ use Ramsey\Uuid\UuidInterface;
 
 class Company
 {
-    private UuidInterface $uuid;
+    private UuidInterface $id;
     private string $symbol;
     private bool $active;
     private CarbonImmutable $createdAt;
@@ -22,15 +22,15 @@ class Company
         ?bool $active = null
     )
     {
-        $this->uuid = Uuid::uuid4();
+        $this->id = Uuid::uuid4();
         $this->symbol = $symbol;
         $this->active = $active ?? false;
         $this->createdAt = $this->updatedAt = CarbonImmutable::now()->utc();
     }
 
-    public function uuid(): UuidInterface
+    public function id(): UuidInterface
     {
-        return $this->uuid;
+        return $this->id;
     }
 
     public function symbol(): string

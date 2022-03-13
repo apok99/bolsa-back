@@ -37,25 +37,25 @@ class FMPMarketApi implements MarketApi
         return $this->makeRequest($url);
     }
 
-    public function getCompanyPrice(string $identifier): array
+    public function getCompanyPrice(Company $company): float
     {
-        // TODO: Implement getSharePrice() method.
-        dd($this->makeRequest('api/v3/quote-short/' . $identifier));
-        return [];
+        $response = $this->getCompany($company);
+
+        return $response[0]['price'];
     }
 
-    public function getCompany(string $identifier): array
+    public function getCompany(Company $company): array
     {
-        dd($this->makeRequest('api/v3/quote/' . $identifier));
-
-        return [];
+        return $this->makeRequest(
+            FMPMarketApiUrls::GET_COMPANIES_URL . $company->symbol()
+        );
     }
 
 
-    public function getCryptoPrice(string $identifier): array
+    public function getCryptoPrice(string $identifier): float
     {
         // TODO: Implement getCryptoPrice() method.
-        return [];
+        return 0.0;
     }
 
     public function getCryptos(array $cryptos): array

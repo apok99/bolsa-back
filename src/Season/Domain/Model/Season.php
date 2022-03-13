@@ -11,7 +11,7 @@ use Ramsey\Uuid\UuidInterface;
 
 class Season
 {
-    private UuidInterface $uuid;
+    private UuidInterface $id;
     private CarbonImmutable $startDate;
     private CarbonImmutable $endDate;
 
@@ -20,14 +20,14 @@ class Season
         CarbonImmutable $endDate
     )
     {
-        $this->uuid = Uuid::uuid4();
+        $this->id = Uuid::uuid4();
         $this->startDate = $startDate;
         $this->endDate = $endDate;
     }
 
-    public function uuid(): UuidInterface
+    public function id(): UuidInterface
     {
-        return $this->uuid;
+        return $this->id;
     }
 
     public function startDate(): CarbonImmutable

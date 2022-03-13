@@ -2,6 +2,7 @@
 
 namespace App\Shared\Domain\ValueObject;
 
+use App\Company\Domain\Model\Company;
 use App\Shared\Domain\Exception\InvalidEntityReferenceTypeException;
 use App\Shared\Domain\Validator\ValueObject;
 use Ramsey\Uuid\UuidInterface;
@@ -9,7 +10,7 @@ use ReflectionClass;
 
 class EntityReference implements ValueObject
 {
-    private UuidInterface $uuid;
+    private UuidInterface $id;
     private string $type;
 
     public const COMPANY = 'company';
@@ -17,12 +18,12 @@ class EntityReference implements ValueObject
     public const FOREX = 'forex';
 
     public function __construct(
-        UuidInterface $uuid,
+        UuidInterface $id,
         string $type
     )
     {
         self::validate($type);
-        $this->uuid = $uuid;
+        $this->id = $id;
         $this->type = $type;
     }
 
@@ -39,9 +40,9 @@ class EntityReference implements ValueObject
         return (new ReflectionClass(self::class))->getConstants();
     }
 
-    public function uuid(): UuidInterface
+    public function id(): UuidInterface
     {
-        return $this->uuid;
+        return $this->id;
     }
 
     public function type(): string
@@ -62,5 +63,13 @@ class EntityReference implements ValueObject
     public function isForex(): bool
     {
         return self::FOREX === $this->type;
+    }
+
+    public static function fromCompany(Company $company): self
+    {
+        return new self(
+            $company->id(),
+            self::COMPANY
+        );
     }
 }
