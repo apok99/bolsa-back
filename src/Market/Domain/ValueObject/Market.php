@@ -35,6 +35,11 @@ class Market implements ValueObject
         return (new ReflectionClass(self::class))->getConstants();
     }
 
+    public function value(): string
+    {
+        return $this->value;
+    }
+
     public function isNasdaq(): bool
     {
         return self::NASDAQ === $this->value;

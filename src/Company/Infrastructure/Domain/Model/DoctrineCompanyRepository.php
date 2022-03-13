@@ -6,6 +6,7 @@ namespace App\Company\Infrastructure\Domain\Model;
 
 use App\Company\Domain\Model\Company;
 use App\Company\Domain\Model\CompanyRepository;
+use App\Market\Domain\ValueObject\Market;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Ramsey\Uuid\UuidInterface;
@@ -27,13 +28,18 @@ class DoctrineCompanyRepository extends ServiceEntityRepository implements Compa
         return $this->findBy(['active' => true, 'deletedAt' => null]);
     }
 
-    public function byUuid(UuidInterface $uuid) : ?Company{
-        return $this->find($uuid);
+    public function byId(UuidInterface $id) : ?Company{
+        return $this->find($id);
     }
 
     public function bySymbol(string $symbol): ?Company
     {
         return $this->findOneBy(['symbol' => $symbol]);
+    }
+
+    public function byMarket(Market $market): array
+    {
+        return $this->findBy(['market' => $market->value()]);
     }
 
     public function bySymbols(array $symbols): array

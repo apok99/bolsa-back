@@ -10,13 +10,13 @@ use Ramsey\Uuid\UuidInterface;
 class SendPasswordRecoverEmail implements Command
 {
     public function __construct(
-        private UuidInterface $uuid
+        private UuidInterface $id
     )
     {
     }
 
-    public function uuid(): UuidInterface
+    public function id(): UuidInterface
     {
-        return $this->uuid;
+        return $this->id;
     }
 }

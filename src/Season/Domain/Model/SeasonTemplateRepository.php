@@ -8,6 +8,6 @@ use Ramsey\Uuid\UuidInterface;
 interface SeasonTemplateRepository
 {
     public function save(SeasonTemplate $seasonTemplate): void;
-    public function find(UuidInterface $uuid): ?SeasonTemplate;
-    public function findOrFail(UuidInterface $uuid): SeasonTemplate;
+    public function find(UuidInterface $id): ?SeasonTemplate;
+    public function findOrFail(UuidInterface $id): SeasonTemplate;
 }

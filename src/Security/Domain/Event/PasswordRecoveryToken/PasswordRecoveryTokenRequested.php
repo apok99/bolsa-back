@@ -10,20 +10,20 @@ use Ramsey\Uuid\UuidInterface;
 
 class PasswordRecoveryTokenRequested implements DomainEvent
 {
-    private UuidInterface $userUuid;
+    private UuidInterface $id;
     private CarbonImmutable $occurredOn;
 
     public function __construct(
         UuidInterface $userUuid
     )
     {
-        $this->userUuid = $userUuid;
+        $this->id = $userUuid;
         $this->occurredOn = CarbonImmutable::now()->utc();
     }
 
-    public function userUuid(): UuidInterface
+    public function id(): UuidInterface
     {
-        return $this->userUuid;
+        return $this->id;
     }
 
     public function occurredOn(): CarbonImmutable

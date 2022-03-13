@@ -23,7 +23,7 @@ class SendPasswordRecoverEmailOnPasswordRecoveryTokenRequested implements EventS
     {
         $this->passwordRecoveryTokenRepository->save(
             new PasswordRecoveryToken(
-                $event->userUuid()
+                $event->id()
             )
         );
 
