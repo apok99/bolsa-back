@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\MarketApi\Infrastructure\Validator;
+namespace App\Market\Infrastructure\Validator;
 
 use App\Shared\Infrastructure\Validator\BaseValidator;
 use App\Shared\Infrastructure\Validator\Constraint\NotBlank;

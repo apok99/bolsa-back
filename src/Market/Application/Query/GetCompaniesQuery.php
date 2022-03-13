@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\MarketApi\Application\Query;
+namespace App\Market\Application\Query;
 
 use App\CQRS\Application\Query\Query;
 

@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace App\MarketApi\Application\Query;
+namespace App\Market\Application\Query;
 
 use App\Api\Domain\ValueObject\ApiResponse;
 use App\Company\Domain\Model\CompanyRepository;
 use App\CQRS\Application\Query\QueryHandler;
-use App\MarketApi\Domain\Service\MarketApi;
+use App\Market\Domain\Service\MarketApi;
 
 class GetAllCompaniesQueryHandler implements QueryHandler
 {

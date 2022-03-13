@@ -7,7 +7,7 @@ security:
     type: annotation
     prefix: /api/v1
 market_api:
-    resource: ../../src/MarketApi/Infrastructure/Controller/v1/
+    resource: ../../src/Market/Infrastructure/Controller/v1/
     type: annotation
     prefix: /api/v1
 api_login:

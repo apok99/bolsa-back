@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace App\MarketApi\Infrastructure\Service;
+namespace App\Market\Infrastructure\Service;
 
 use App\Company\Domain\Model\Company;
-use App\MarketApi\Domain\Service\MarketApi;
+use App\Market\Domain\Service\MarketApi;
 use Exception;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
@@ -62,6 +62,29 @@ class FMPMarketApi implements MarketApi
     {
         // TODO: Implement getCryptos() method.
         return [];
+    }
+
+    /**
+     * This refers to NYSE and NASDAQ stock markets
+     */
+    public function isStockMarketOpen(): bool
+    {
+        $response = $this->makeRequest(FMPMarketApiUrls::GET_MARKET_STATUS);
+
+        return $response['isTheStockMarketOpen'];
+    }
+
+    public function isForexMarketOpen(): bool
+    {
+        $response = $this->makeRequest(FMPMarketApiUrls::GET_MARKET_STATUS);
+
+        return $response['isTheForexMarketOpen'];
+    }
+
+    public function isEuronextMarketOpen(): bool
+    {
+        // TODO: Find an API to check the Euronext market status
+        return false;
     }
 
     private function makeRequest($url): array

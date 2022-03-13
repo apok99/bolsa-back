@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace App\MarketApi\Infrastructure\Controller\v1;
+namespace App\Market\Infrastructure\Controller\v1;
 
-use App\MarketApi\Application\Query\GetCompaniesQuery;
-use App\MarketApi\Infrastructure\Validator\GetCompaniesValidator;
+use App\Market\Application\Query\GetCompaniesQuery;
+use App\Market\Infrastructure\Validator\GetCompaniesValidator;
 use App\Shared\Infrastructure\Controller\v1\BaseController;
 use Symfony\Component\Routing\Annotation\Route;
 
