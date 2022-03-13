@@ -13,7 +13,7 @@ class GetCompaniesValidator extends BaseValidator
 {
     private const SYMBOLS = 'symbols';
 
-    public static function validateBy(array $payload): self
+    public static function validateBy(array $payload): parent
     {
         return parent::validate($payload);
     }

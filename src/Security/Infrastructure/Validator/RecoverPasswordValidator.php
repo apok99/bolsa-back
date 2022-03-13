@@ -16,7 +16,7 @@ class RecoverPasswordValidator extends BaseValidator
 {
     private const EMAIL = 'email';
 
-    public static function validateBy(array $payload): self
+    public static function validateBy(array $payload): parent
     {
         return self::validate($payload);
     }

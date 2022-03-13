@@ -28,7 +28,7 @@ class RegisterValidator extends BaseValidator
     private const CONFIRM_PASSWORD = 'confirmPassword';
     private const TOS = 'tos';
 
-    public static function validateBy(array $payload): self
+    public static function validateBy(array $payload): parent
     {
         return self::validate($payload);
     }

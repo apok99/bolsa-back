@@ -22,7 +22,7 @@ class AddCompaniesValidator extends BaseValidator
     public const MARKET = 'market';
     public const ACTIVE = 'active';
 
-    public static function validateBy(array $payload): self
+    public static function validateBy(array $payload): parent
     {
         return parent::validate($payload);
     }
