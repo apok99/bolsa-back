@@ -25,4 +25,5 @@ class ValidatorMessage
     public const TOO_MANY_LOGIN_ATTEMPTS = 'validation.too_many_login_attempts';
     public const BAD_CREDENTIALS = 'validation.bad_credentials';
     public const SECURE_PASSWORD_CONSTRAINT = 'validation.secure_password_constraint';
+    public const INVALID_MARKET = 'validation.invalid_market';
 }

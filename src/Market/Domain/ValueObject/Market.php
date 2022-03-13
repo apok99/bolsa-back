@@ -10,10 +10,10 @@ use ReflectionClass;
 
 class Market implements ValueObject
 {
-    public const NASDAQ = 'nasdaq';
-    public const CRYPTO = 'crypto';
-    public const NYSE = 'nyse';
-    public const EURONEXT = 'euronext';
+    public const NASDAQ = 'NASDAQ';
+    public const CRYPTO = 'CRYPTO';
+    public const NYSE = 'NYSE';
+    public const EURONEXT = 'EURONEXT';
 
     public function __construct(
         private string $value

@@ -7,6 +7,7 @@ namespace App\Company\Application\Command;
 use App\Company\Domain\Model\Company;
 use App\Company\Domain\Model\CompanyRepository;
 use App\CQRS\Application\Command\CommandHandler;
+use App\Market\Domain\ValueObject\Market;
 
 class AddCompaniesHandler implements CommandHandler
 {
@@ -22,6 +23,7 @@ class AddCompaniesHandler implements CommandHandler
         {
             $company = new Company(
                 $company['symbol'],
+                new Market($company['market']),
                 $company['active'] ?? null
             );
 

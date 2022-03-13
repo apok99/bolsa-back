@@ -1,5 +1,9 @@
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping">
     <entity name="App\Company\Domain\Model\Company">
+        <indexes>
+            <index name="market_idx" columns="market"/>
+        </indexes>
+
         <id name="id" type="uuid_binary"/>
         <field name="symbol" unique="true"/>
         <embedded name="market" class="App\Market\Domain\ValueObject\Market" use-column-prefix="false"/>
