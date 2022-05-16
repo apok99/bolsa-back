@@ -18,6 +18,8 @@ server-dump:
 docker-start:
 	@UID=$(id -u) GID=$(id -g) docker compose up -d
 setup:
+	#@UID=$(id -u) GID=$(id -g) docker compose up -d
+	@docker exec -it capitale-php composer install
 	@cp .env .env.local
 	@docker exec -it capitale-php php bin/console lexik:jwt:generate-keypair
 	@make create-db

@@ -255,6 +255,9 @@
     "sebastian/version": {
         "version": "3.0.2"
     },
+    "stella-maris/clock": {
+        "version": "0.1.4"
+    },
     "symfony/amqp-messenger": {
         "version": "v6.0.5"
     },
